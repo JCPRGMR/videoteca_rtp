@@ -1,0 +1,216 @@
+:root{
+    --Color1: #9f1243;
+    --Color2: #20C2D6;
+    --Color3: #f2af57;
+    --Color4: #eb4946;
+    --Color5: #4CAF50;
+    --Color6: #E0E0E0;
+    --Color7: #343A40;
+    --Color8: #1c2023;
+    --Color9: #000000;
+}
+.hover-white:hover{
+    background-color: white;
+    color: black;
+}
+.txthover1:hover{
+    color: var(--Color1);
+}
+.hover1:hover{
+    background-color: var(--Color1);
+    color: white;
+}
+.hover2:hover{
+    background-color: var(--Color2);
+    color: white;
+}
+.hover3:hover{
+    background-color: var(--Color3);
+    color: black;
+}
+.hover4:hover{
+    background-color: var(--Color4);
+    color: white;
+}
+.hover5:hover{
+    background-color: var(--Color5);
+    color: black;
+}
+.hover6:hover{
+    background-color: var(--Color6);
+    color: black;
+}
+.hover7:hover{
+    background-color: var(--Color7);
+    color: white;
+}
+.hover8:hover{
+    background-color: var(--Color8);
+    color: white;
+}
+/**
+ * CHECKS x labels COLORS
+ */
+.check1:checked + label{
+    background-color: var(--Color1);
+    color: white;
+}
+.check2:checked + label{
+    background-color: var(--Color2);
+    color: black;
+}
+.check3:checked + label{
+    background-color: var(--Color3);
+    color: black;
+}
+.check4:checked + label{
+    background-color: var(--Color4);
+    color: white;
+}
+.check5:checked + label{
+    background-color: var(--Color5);
+    color: black;
+}
+.check6:checked + label{
+    background-color: var(--Color6);
+    color: black;
+}
+.check7:checked + label{
+    background-color: var(--Color7);
+    color: white;
+}
+.check8:checked + label{
+    background-color: var(--Color8);
+    color: white;
+}
+/**
+ * TEXT COLOR
+ */
+.black{
+    color: black;
+}
+/* Se volvio a colocar la clase white para wl color blanco porque que el color6 tiene un tono mas gris */
+.txtwhite{
+    color: white;
+}
+
+.color1{
+    background-color: var(--Color1);
+}
+.color2{
+    background-color: var(--Color2);
+}
+.color3{
+    background-color: var(--Color3);
+}
+.color4{
+    background-color: var(--Color4);
+}
+.color5{
+    background-color: var(--Color5);
+}
+.color6{
+    background-color: var(--Color6);
+}
+.color7{
+    background-color: var(--Color7);
+}
+.color8{
+    background-color: var(--Color8);
+}
+.color9{
+    background-color: var(--Color9);
+}
+/**
+ * BG COLOR'S
+ */
+.text1{
+    color: var(--Color1);
+}
+.text2{
+    color: var(--Color2);
+}
+.text3{
+    color: var(--Color3);
+}
+.text4{
+    color: var(--Color4);
+}
+.text5{
+    color: var(--Color5);
+}
+.text6{
+    color: var(--Color6);
+}
+.text7{
+    color: var(--Color7);
+}
+.text8{
+    color: var(--Color8);
+}
+.text9{
+    color: var(--Color9);
+}
+/**
+ * GRAGIENDT BG's
+ */
+/**
+ * INTERCALACION DE TABLAS
+ */
+.odd1:nth-child(odd){
+    background-color: var(--Color1);
+}
+.odd2:nth-child(odd){
+    background-color: var(--Color2);
+}
+.odd3:nth-child(odd){
+    background-color: var(--Color3);
+}
+.odd4:nth-child(odd){
+    background-color: var(--Color4);
+}
+.odd5:nth-child(odd){
+    background-color: var(--Color5);
+}
+.odd6:nth-child(odd){
+    background-color: var(--Color6);
+}
+.odd7:nth-child(odd){
+    background-color: var(--Color7);
+}
+.odd8:nth-child(odd){
+    background-color: var(--Color8);
+}
+.odd9:nth-child(odd){
+    background-color: var(--Color9);
+}
+/**
+ * EVEN
+ */
+.even1:nth-child(even){
+    background-color: var(--Color1);
+}
+.even2:nth-child(even){
+    background-color: var(--Color2);
+}
+.even3:nth-child(even){
+    background-color: var(--Color3);
+}
+.even4:nth-child(even){
+    background-color: var(--Color4);
+}
+.even5:nth-child(even){
+    background-color: var(--Color5);
+}
+.even6:nth-child(even){
+    background-color: var(--Color6);
+}
+.even7:nth-child(even){
+    background-color: var(--Color7);
+}
+.even8:nth-child(even){
+    background-color: var(--Color8);
+}
+.even9:nth-child(even){
+    background-color: var(--Color9);
+}
