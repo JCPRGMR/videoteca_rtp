@@ -1,4 +1,8 @@
 -- Active: 1716929637665@@127.0.0.1@3306@videoteca_rtp
+DROP DATABASE videoteca_rtp;
+CREATE DATABASE videoteca_rtp;
+USE videoteca_rtp;
+
 CREATE TABLE users(
     id_user int primary key auto_increment,
     username varchar(25),
@@ -36,18 +40,49 @@ CREATE TABLE departaments(
 );
 CREATE TABLE departaments_areas(
     id_fk_departament int not null,
-    _create datetime not null,
-    _update datetime not null
-    Foreign Key (id_fk_departament) REFERENCES departaments(id_departaments)
+    id_fk_area int not null,
+    departaments_areas_create datetime not null,
+    departaments_areas_update datetime not null,
+    Foreign Key (id_fk_departament) REFERENCES departaments(id_departament) ON DELETE CASCADE,
+    Foreign Key (id_fk_area) REFERENCES areas(id_area) ON DELETE CASCADE
 );
 CREATE TABLE departaments_kinds(
     id_fk_departament int not null,
-    _create datetime not null,
-    _update datetime not null
-    Foreign Key (id_fk_departament) REFERENCES departaments(id_departaments)
+    id_fk_kind int not null,
+    departaments_kinds_create datetime not null,
+    departaments_kinds_update datetime not null,
+    Foreign Key (id_fk_departament) REFERENCES departaments(id_departament) ON DELETE CASCADE,
+    Foreign Key (id_fk_kind) REFERENCES kinds(id_kind) ON DELETE CASCADE
 );
-CREATE TABLE videos();
-CREATE TABLE agreeement();
+CREATE TABLE videos(
+    id_video bigint primary key auto_increment,
+    cod_video varchar(20),
+    title text,
+    details text,
+    path_play text,
+    duration text,
+    name_file text,
+    portrait text,
+    id_fk_area int not null,
+    id_fk_kind int not null,
+    id_fk_departament int not null,
+    date_user date not null,
+    video_create datetime not null,
+    video_update datetime not null,
+    Foreign Key (id_fk_area) REFERENCES areas(id_area) ON DELETE CASCADE,
+    Foreign Key (id_fk_kind) REFERENCES kinds(id_kind) ON DELETE CASCADE,
+    Foreign Key (id_fk_departament) REFERENCES departaments(id_departament) ON DELETE CASCADE
+);
+CREATE TABLE agreeement(
+    id_agreeement bigint primary key auto_increment,
+    nro_agreeemnt text,
+    agreement text,
+    agreement_expiration date,
+    id_fk_video bigint,
+    agreement_create datetime not null,
+    agreement_update datetime not null,
+    Foreign Key (id_fk_video) REFERENCES videos(id_video) ON DELETE CASCADE
+);
 CREATE TABLE users_activities(
     id_fk_user int,
     id_fk_video bigint,
@@ -56,7 +91,7 @@ CREATE TABLE users_activities(
     details text,
     videos_activity_create datetime,
     videos_activity_update datetime,
-    Foreign Key (id_fk_user) REFERENCES users() DELETE ON CASCADE
-    Foreign Key (id_fk_video) REFERENCES video() DELETE ON CASCADE
-    Foreign Key (id_fk_activiy) REFERENCES activities() DELETE ON CASCADE
+    Foreign Key (id_fk_user) REFERENCES users(id_user) ON DELETE CASCADE,
+    Foreign Key (id_fk_video) REFERENCES videos(id_video) ON DELETE CASCADE,
+    Foreign Key (id_fk_activity) REFERENCES activities(id_activity) ON DELETE CASCADE
 );

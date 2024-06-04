@@ -21,25 +21,22 @@
                     title,
                     details,
 
-                    path_play,
-                    name_file,
-
                     id_fk_area,
                     id_fk_kind,
                     id_fk_departament,
 
                     video_create,
                     video_update
-                ) VALUES(?,?,?,?, ?,?,?,?, ?,?)";
+                ) VALUES(?,?,?,?, ?,?,?,?)";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindParam(1, $post->cod_video, PDO::PARAM_STR);
                 $stmt->bindParam(2, $post->descripcion, PDO::PARAM_STR);
                 $stmt->bindParam(3, $post->detalles, PDO::PARAM_STR);
-                $stmt->bindParam(6, $post->area, PDO::PARAM_STR);
-                $stmt->bindParam(7, $post->tipo, PDO::PARAM_STR);
-                $stmt->bindParam(8, $post->departamento, PDO::PARAM_STR);
-                $stmt->bindParam(9, Connection::$date_hour, PDO::PARAM_STR);
-                $stmt->bindParam(10, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(4, $post->area, PDO::PARAM_STR);
+                $stmt->bindParam(5, $post->tipo, PDO::PARAM_STR);
+                $stmt->bindParam(6, $post->departamento, PDO::PARAM_STR);
+                $stmt->bindParam(7, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(8, Connection::$date_hour, PDO::PARAM_STR);
                 $stmt->execute();
             } catch (PDOException $th) {
                 echo $th->getMessage();

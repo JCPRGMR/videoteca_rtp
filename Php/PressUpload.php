@@ -15,4 +15,6 @@
     
     $_POST['cod_video'] = $codigo;
 
+    Videos::Insertar((object) $_POST);
+
     echo json_encode($_POST);
