@@ -38,4 +38,4 @@
         </div>
     </div>
 </div>
-<script src="../JavaScripts/SubirVideo5.js"></script>
+<script src="../JavaScripts/SubirVideo7.js"></script>

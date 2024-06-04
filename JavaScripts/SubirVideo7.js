@@ -1,5 +1,6 @@
 window.onload = function() {            // INVESTIGAR ESTA FUNCION 
     let btnSubirVideo = document.getElementById("subirVideo");   // CAPTURAMOS EL ID DEL INPUT:FILE EN ESTA VARIABLE
+    // alert(1)
     btnSubirVideo.onclick = function() {
         alert("Espere para que el video Termine de subirse")
         let Video = document.getElementById("VideoContainer")
@@ -20,10 +21,9 @@ window.onload = function() {            // INVESTIGAR ESTA FUNCION
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var response = JSON.parse(xhr.responseText);
-                // console.log(response);
                 servicioFile({
-                    url: "../Php/GuardarVideo.php",  // RUTA DE ARCHIVO PHP QUE GUARDA LOS VIDEOS
-                    type: "post",           // METODO DE COMO SE ESTA ENVIANDO LOS VIDEOS
+                    url: "../Php/GuardarVideo.php",
+                    type: "post",
                     responseType: "text",
                     mbEnvio: 3,
                     file: f,
@@ -31,14 +31,7 @@ window.onload = function() {            // INVESTIGAR ESTA FUNCION
                 }).then(function(d) {
                     if (d === "OK") {
                         alert("Video Subido Correctamente")
-                        // location.href = "../Views/Press.php"
-                        let PathSend = new URLSearchParams({
-                            path: response.cod_video + '.' + archivo.name.split('.').pop(),
-                            cod_video: response.cod_video,
-                            name: f.name,
-                        });
-                        let UpdatePath = new XMLHttpRequest();
-                        UpdatePath.open("POST", "../Php/UpdatePath.php", true);
+                        
                     } else {
                         console.log('Error al subir el archivo')
                     }
@@ -49,7 +42,6 @@ window.onload = function() {            // INVESTIGAR ESTA FUNCION
 
     }
 }
-alert(1)
 var servicioFile = function(obj) {
     var inicio = 0,
         archivo = obj.file,
