@@ -1,7 +1,7 @@
 <?php
     date_default_timezone_set('America/Caracas');
     $_POST = array_map(function($value) {
-        return strtoupper(trim($value));
+        return trim($value);
     }, $_POST);
     class Connection{
         private static string $host = "localhost";

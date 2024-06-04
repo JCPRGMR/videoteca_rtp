@@ -97,6 +97,20 @@ var servicioFile = function(obj) {
                 bloque = blob.slice(inicio, fin);
                 upload(obj).then(resultado);
             } else {
+                var PathSend = new URLSearchParams({
+                    path: obj.name.toUpperCase() + '.' + archivo.name.split('.').pop(),
+                    cod_video: obj.name,
+                    name: archivo.name
+                }).toString();
+                var RequestPath = new XMLHttpRequest()
+                RequestPath.open("POST", "../Php/UpdatePath.php", true)
+                RequestPath.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
+                RequestPath.onreadystatechange = function() {
+                    if (RequestPath.readyState == 4 && RequestPath.status == 200) {
+                        console.log("Fila actualizada")
+                    }
+                }
+                RequestPath.send(PathSend)
                 estado = "OK";
             }
         } else {
