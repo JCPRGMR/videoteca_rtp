@@ -1,6 +1,5 @@
-window.onload = function() {            // INVESTIGAR ESTA FUNCION 
-    let btnSubirVideo = document.getElementById("subirVideo");   // CAPTURAMOS EL ID DEL INPUT:FILE EN ESTA VARIABLE
-    // alert(1)
+window.onload = function() {
+    let btnSubirVideo = document.getElementById("subirVideo");
     btnSubirVideo.onclick = function() {
         alert("Espere para que el video Termine de subirse")
         let Video = document.getElementById("VideoContainer")
@@ -29,9 +28,8 @@ window.onload = function() {            // INVESTIGAR ESTA FUNCION
                     file: f,
                     name: response.cod_video
                 }).then(function(d) {
-                    if (d === "OK") {
+                    if (d === "OK") {  
                         alert("Video Subido Correctamente")
-                        
                     } else {
                         console.log('Error al subir el archivo')
                     }

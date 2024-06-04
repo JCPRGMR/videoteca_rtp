@@ -44,4 +44,20 @@
                 echo $th->getMessage();
             }
         }
+        public static function UpdatePath($post){
+            try {
+                $sql = "UPDATE videos SET 
+                path_play = ?,
+                name_file = ?,
+                video_update = ? WHERE cod_video = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $post->path, PDO::PARAM_STR);
+                $stmt->bindParam(2, $post->name, PDO::PARAM_STR);
+                $stmt->bindParam(3, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(4, $post->cod_video, PDO::PARAM_STR);
+                $stmt->execute();
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
     }
