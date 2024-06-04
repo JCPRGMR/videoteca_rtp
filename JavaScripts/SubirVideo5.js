@@ -1,4 +1,3 @@
-// alert(3)
 window.onload = function() {            // INVESTIGAR ESTA FUNCION 
     let btnSubirVideo = document.getElementById("subirVideo");   // CAPTURAMOS EL ID DEL INPUT:FILE EN ESTA VARIABLE
     btnSubirVideo.onclick = function() {
@@ -6,11 +5,6 @@ window.onload = function() {            // INVESTIGAR ESTA FUNCION
         let Video = document.getElementById("VideoContainer")
         let f = Video.files[0];
 
-        /**
-         *  SUBIR A LA BASE DE DATOS Y CAPTURAR EL NOMBRE Y AUMENTAR
-         */
-        
-        // var SendParams = `area=${document.getElementById("area").value}&fecha=${document.getElementById("fecha").value}`;
         var SendParams = new URLSearchParams({
             area: document.getElementById("area").value,
             tipo: document.getElementById("tipo").value,
@@ -26,29 +20,36 @@ window.onload = function() {            // INVESTIGAR ESTA FUNCION
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var response = JSON.parse(xhr.responseText);
-                console.log(response);
+                // console.log(response);
+                servicioFile({
+                    url: "../Php/GuardarVideo.php",  // RUTA DE ARCHIVO PHP QUE GUARDA LOS VIDEOS
+                    type: "post",           // METODO DE COMO SE ESTA ENVIANDO LOS VIDEOS
+                    responseType: "text",
+                    mbEnvio: 3,
+                    file: f,
+                    name: response.cod_video
+                }).then(function(d) {
+                    if (d === "OK") {
+                        alert("Video Subido Correctamente")
+                        // location.href = "../Views/Press.php"
+                        let PathSend = new URLSearchParams({
+                            path: response.cod_video + '.' + archivo.name.split('.').pop(),
+                            cod_video: response.cod_video,
+                            name: f.name,
+                        });
+                        let UpdatePath = new XMLHttpRequest();
+                        UpdatePath.open("POST", "../Php/UpdatePath.php", true);
+                    } else {
+                        console.log('Error al subir el archivo')
+                    }
+                });
             }
         };
         xhr.send(SendParams);        
 
-        servicioFile({
-            url: "../Php/GuardarVideo.php",  // RUTA DE ARCHIVO PHP QUE GUARDA LOS VIDEOS
-            type: "post",           // METODO DE COMO SE ESTA ENVIANDO LOS VIDEOS
-            responseType: "text",
-            mbEnvio: 3,
-            file: f,
-            name: f.name
-        }).then(function(d) {
-            if (d === "OK") {
-                alert("Video Subido Correctamente")
-                // location.href = "../Views/Press.php"
-            } else {
-                console.log('Error al subir el archivo')
-            }
-        });
     }
 }
-
+alert(1)
 var servicioFile = function(obj) {
     var inicio = 0,
         archivo = obj.file,
@@ -57,7 +58,7 @@ var servicioFile = function(obj) {
         fin = size,
         blob = new Blob([archivo]),
         bloque = blob.slice(inicio, fin),
-        archivoGrabar = (obj.ruta === undefined ? archivo.name : obj.ruta),
+        archivoGrabar = (obj.ruta === undefined ? obj.name + '.' + archivo.name.split('.').pop() : obj.ruta),
         estado = "";
 
     var upload = function(obj) {

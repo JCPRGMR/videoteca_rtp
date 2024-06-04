@@ -4,7 +4,7 @@
         public static function BuscarCodVideo($cod_video){
             $cod_video = "%". $cod_video ."%";
             try {
-                $sql = "SELECT COUNT(*) FROM videos WHERE cod_video = ?";
+                $sql = "SELECT COUNT(*) FROM videos WHERE cod_video LIKE ?";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindParam(1, $cod_video, PDO::PARAM_STR);
                 $stmt->execute();
@@ -25,9 +25,10 @@
                     id_fk_kind,
                     id_fk_departament,
 
+                    date_user,
                     video_create,
                     video_update
-                ) VALUES(?,?,?,?, ?,?,?,?)";
+                ) VALUES(?,?,?,?, ?,?,?,?,?)";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindParam(1, $post->cod_video, PDO::PARAM_STR);
                 $stmt->bindParam(2, $post->descripcion, PDO::PARAM_STR);
@@ -35,8 +36,9 @@
                 $stmt->bindParam(4, $post->area, PDO::PARAM_STR);
                 $stmt->bindParam(5, $post->tipo, PDO::PARAM_STR);
                 $stmt->bindParam(6, $post->departamento, PDO::PARAM_STR);
-                $stmt->bindParam(7, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(7, $post->fecha, PDO::PARAM_STR);
                 $stmt->bindParam(8, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(9, Connection::$date_hour, PDO::PARAM_STR);
                 $stmt->execute();
             } catch (PDOException $th) {
                 echo $th->getMessage();
