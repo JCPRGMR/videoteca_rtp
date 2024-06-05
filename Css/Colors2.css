@@ -8,6 +8,16 @@
     --Color7: #343A40;
     --Color8: #1c2023;
     --Color9: #000000;
+
+    --Color1_a: #9f1243a9;
+    --Color2_a: #20C2D6a9;
+    --Color3_a: #f2af57a9;
+    --Color4_a: #eb4946a9;
+    --Color5_a: #4CAF50a9;
+    --Color6_a: #E0E0E0a9;
+    --Color7_a: #343A40a9;
+    --Color8_a: #1c2023a9;
+    --Color9_a: #000000a9;
 }
 .hover-white:hover{
     background-color: white;
@@ -120,6 +130,33 @@
 }
 .color9{
     background-color: var(--Color9);
+}
+.color1_a{
+    background-color: var(--Color1_a);
+}
+.color2_a{
+    background-color: var(--Color2_a);
+}
+.color3_a{
+    background-color: var(--Color3_a);
+}
+.color4_a{
+    background-color: var(--Color4_a);
+}
+.color5_a{
+    background-color: var(--Color5_a);
+}
+.color6_a{
+    background-color: var(--Color6_a);
+}
+.color7_a{
+    background-color: var(--Color7_a);
+}
+.color8_a{
+    background-color: var(--Color8_a);
+}
+.color9_a{
+    background-color: var(--Color9_a);
 }
 /**
  * BG COLOR'S

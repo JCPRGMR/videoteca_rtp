@@ -1,4 +1,13 @@
 <?php require_once '../Templates/Header.php'?>
+<link rel="stylesheet" href="../Css/Spin_01.css">
+
+<div class="color7_a w100p h100vh f-col a-c jc-c gap20 fixed top0 v-hidden noselect" id="spin_load">
+    <div class="negrita txtwhite" id="spin_text">Subiendo video...</div>
+    <div class="text6 br50p h100px w100px overflow-hidden color9 f-row jc-c a-c">
+        <img src="../Images/rtp_icono.png" alt="" class="loading-animation w100p h100p">
+    </div>
+</div>
+
 <div class="w100p h100p color7 overflow-auto">
     <div action="" method="post" class="f-col p30 gap20">
         <div class="f-row gap20 wrap">

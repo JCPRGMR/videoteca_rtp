@@ -1,6 +1,17 @@
 <?php
     require_once '../Connection/Connection.php';
     Class Videos extends Connection{
+        public static function Mostrar(){
+            try {
+                $sql = "SELECT * FROM view_videos ORDER BY video_create DESC";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_OBJ);
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
         public static function BuscarCodVideo($cod_video){
             $cod_video = "%". $cod_video ."%";
             try {

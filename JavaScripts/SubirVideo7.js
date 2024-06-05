@@ -29,7 +29,12 @@ window.onload = function() {
                     name: response.cod_video
                 }).then(function(d) {
                     if (d === "OK") {  
-                        alert("Video Subido Correctamente")
+                        var spin_load = document.getElementById("spin_load")
+                        var spin_text = document.getElementById("spin_text")
+                        spin_text.textContent = "Video Subido Correctamente"
+                        setTimeout(() => {
+                            location.href = "/Views/Press.php"
+                        }, 1500);
                     } else {
                         console.log('Error al subir el archivo')
                     }
@@ -53,6 +58,8 @@ var servicioFile = function(obj) {
 
     var upload = function(obj) {
         return new Promise(function(resolve, reject) {
+            var spin_load = document.getElementById("spin_load")
+            spin_load.style.visibility = "visible"
             var req = new XMLHttpRequest();
             var ur = "";
             obj.type = (obj.type ? obj.type : "Post");
