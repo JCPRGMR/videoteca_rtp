@@ -1,7 +1,7 @@
 -- VISTA DE VIDEOS
 DROP VIEW IF EXISTS view_videos;
 CREATE VIEW view_videos AS
-SELECT id_video, cod_video, title, details, path_play, des_area, des_kind, video_create FROM videos
+SELECT id_video, cod_video, title, details, path_play, des_area, des_kind, video_create, date_user, id_fk_departament FROM videos
 INNER JOIN areas ON id_area = id_fk_area
 INNER JOIN kinds ON id_kind = id_fk_kind;
 

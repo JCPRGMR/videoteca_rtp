@@ -12,7 +12,7 @@
             <th class="p10">ACCIONES</th>
         </thead>
         <tbody id="tbody">
-            <?php foreach(Videos::Mostrar() as $item):?>
+            <?php foreach(Videos::Mostrar(1) as $item):?>
                 <tr class="odd8">
                     <td class="center"><?= $item->des_area ?></td>
                     <td class="center"><?= $item->des_kind ?></td>
@@ -21,7 +21,7 @@
                     <td class="center"><?= date_format(new DateTime($item->video_create), "d/m/Y") ?></td>
                     <td class="center">
                         <form action="Player.php" method="post">
-                            <button type="submit"><?= $item->id_video ?></button>
+                            <button type="submit" name="" value="<?= $item->id_video ?>">Ver video</button>
                         </form>
                     </td>
                 </tr>
@@ -29,3 +29,4 @@
         </tbody>
     </table>
 </div>
+<script src="../JavaScripts/SearchVideoPress.js"></script>

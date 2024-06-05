@@ -18,8 +18,8 @@
         </div>
         <div class="relative f-row gap10 a-c wrap">
             <?php if($_SERVER['REQUEST_URI'] === '/Views/Press.php'):?>
-                <input type="search" name="" id="" placeholder="Buscador" class="p10 br10 color7 txtwhite">
-                <a href="PressForm.php" class="p10 pointer overflow-hidden txtwhite negrita b2-bot">
+                <input type="search" name="search" id="search" placeholder="Buscador" class="p10 br10 color7 txtwhite">
+                <a href="PressForm.php" class="p10 pointer overflow-hidden txtwhite negrita b2-bot txthover1">
                     Subir video
                 </a>
             <?php elseif($_SERVER['REQUEST_URI'] === '/Views/Programming.php'):?>
@@ -28,7 +28,7 @@
                     Subir video
                 </a> -->
             <?php endif;?>
-            <div class="w50px h50px br50p color1 pointer overflow-hidden">
+            <div class="w50px h50px br50p color1 pointer overflow-hidden ">
                 <img src="../Images/rtp_mundo.jpg" alt="" width="50">
             </div>
         </div>
