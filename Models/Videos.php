@@ -87,37 +87,10 @@
         public static function Buscar($list_param) {
             try {
                 // Iniciar la consulta SQL
-                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ?";
-                $params = [];
-                $params[] = $list_param->area;
-        
-                // Agregar búsqueda en múltiples columnas
-                if (!empty($list_param->keywords)) {
-                    $keywords = explode(' ', $list_param->keywords);
-                    $sql .= " AND (";
-                    foreach ($keywords as $index => $keyword) {
-                        if ($index > 0) {
-                            $sql .= " AND ";
-                        }
-                        $sql .= "(title LIKE ? OR details LIKE ? OR des_area LIKE ? OR des_king LIKE ? OR video_create LIKE ? OR date_user LIKE ?)";
-                        $likeKeyword = '%' . $keyword . '%';
-                        $params[] = $likeKeyword; // title
-                        $params[] = $likeKeyword; // details
-                        $params[] = $likeKeyword; // des_area
-                        $params[] = $likeKeyword; // des_king
-                        $params[] = $likeKeyword; // video_create
-                        $params[] = $likeKeyword; // date_user
-                    }
-                    $sql .= ")";
-                }
-        
-                // Conectar y preparar la consulta
+                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ? AND des_ara LIKE ?";
                 $stmt = Connection::Conectar()->prepare($sql);
-                foreach ($params as $index => $param) {
-                    $stmt->bindValue($index + 1, $param, PDO::PARAM_STR);
-                }
-        
-                // Ejecutar la consulta
+                $stmt->bindParam(1, $list_param->a, PDO::PARAM_STR);
+                $stmt->bindParam(2, $list_param->b, PDO::PARAM_STR);
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $resultado;

@@ -1,7 +1,7 @@
 window.onload = function() {
     let btnSubirVideo = document.getElementById("subirVideo");
     btnSubirVideo.onclick = function() {
-        alert("Espere para que el video Termine de subirse")
+        // alert("Espere para que el video Termine de subirse")
         let Video = document.getElementById("VideoContainer")
         let f = Video.files[0];
 

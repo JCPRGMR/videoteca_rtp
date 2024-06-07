@@ -21,7 +21,7 @@
                     <td class="center"><?= date_format(new DateTime($item->video_create), "d/m/Y") ?></td>
                     <td class="center">
                         <form action="Player.php" method="post">
-                            <button type="submit" name="" value="<?= $item->id_video ?>">Ver video</button>
+                            <button type="submit" name="ver_video" value="<?= $item->id_video ?>">Ver video</button>
                         </form>
                     </td>
                 </tr>

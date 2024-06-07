@@ -1,8 +1,7 @@
 var search = document.getElementById("search")
-
+alert(5)
 search.addEventListener('input', function(){
     // console.log(search.value)
-
     var RequestVideo = new XMLHttpRequest()
     var VideoSearchParam = new URLSearchParams({
         StringSearch: search.value
@@ -12,9 +11,7 @@ search.addEventListener('input', function(){
     RequestVideo.onreadystatechange = function() {
         if (RequestVideo.readyState == 4 && RequestVideo.status == 200) {
             var tabla = JSON.parse(RequestVideo.responseText)
-            tabla.forEach(element => {
-                console.log(element)
-            });
+            console.log(search.value)
         }
     }
     RequestVideo.send(VideoSearchParam)
