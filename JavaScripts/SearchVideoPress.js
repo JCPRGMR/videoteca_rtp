@@ -1,10 +1,11 @@
 var search = document.getElementById("search")
-alert(5)
+// alert(6)
 search.addEventListener('input', function(){
     // console.log(search.value)
     var RequestVideo = new XMLHttpRequest()
     var VideoSearchParam = new URLSearchParams({
-        StringSearch: search.value
+        Departament: "PRENSA",
+        buscar: search.value
     })
     RequestVideo.open("POST", "../Php/SearchVideo.php", true);
     RequestVideo.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');

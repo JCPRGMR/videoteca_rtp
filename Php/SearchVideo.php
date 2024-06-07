@@ -1,13 +1,9 @@
 <?php
     include_once '../Models/Videos.php';
+    include_once '../Models/Departaments.php';
 
-    $searchString = $_POST['StringSearch'];
-    $tabla = explode(' ', $searchString);
+    $_POST['Departament'] = Departaments::BuscarId($_POST['Departament']);
 
-    $params = new stdClass();
-    $params->area = $tabla[0]; // Suponiendo que el primer término es el área
-    $params->keywords = implode(' ', array_slice($tabla, 1)); // Los demás términos como palabras clave
 
-    $result = Videos::Buscar($params);
-
+    $result = Videos::Buscar((object) $_POST);
     echo json_encode($result);

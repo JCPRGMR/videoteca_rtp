@@ -84,13 +84,13 @@
                 echo $th->getMessage();
             }
         }
-        public static function Buscar($list_param) {
+        public static function Buscar($post) {
+            
             try {
-                // Iniciar la consulta SQL
-                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ? AND des_ara LIKE ?";
+                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ? AND des_area LIKE ?";
                 $stmt = Connection::Conectar()->prepare($sql);
-                $stmt->bindParam(1, $list_param->a, PDO::PARAM_STR);
-                $stmt->bindParam(2, $list_param->b, PDO::PARAM_STR);
+                $stmt->bindParam(1, $post->Departament, PDO::PARAM_STR);
+                $stmt->bindParam(2, $post, PDO::PARAM_STR);
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $resultado;
