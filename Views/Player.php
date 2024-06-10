@@ -20,7 +20,7 @@
 <div class="w100p h100p color7 f-row gap10 wrap">
     <div class="w100p h100p flex-1">
         <video controls class="w100p h100p" controlsList="nodownload">
-            <source src="/prensa/<?= $v->path_play ?>" type="">
+            <source src="/prensa_videoteca_rtp_2/<?= $v->path_play ?>" type="">
         </video>
     </div>
     <div class="w20p h100p">

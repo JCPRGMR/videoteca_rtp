@@ -1,4 +1,4 @@
--- Active: 1716929637665@@127.0.0.1@3306@videoteca_rtp
+-- Active: 1714663991828@@127.0.0.1@3306
 DROP DATABASE IF EXISTS videoteca_rtp;
 CREATE DATABASE videoteca_rtp;
 USE videoteca_rtp;
