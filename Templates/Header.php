@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="relative f-row gap10 a-c wrap">
-            <?php if($_SERVER['REQUEST_URI'] === '/Views/Press.php'):?>
+            <?php if($_SERVER['REQUEST_URI'] === '/Views/Press.php' || $_SERVER['REQUEST_URI'] === '/videoteca_rtp/Views/Press.php'):?>
                 <input type="search" name="search" id="search" placeholder="Buscador" class="p10 br10 color7 txtwhite">
                 <a href="PressForm.php" class="p10 pointer overflow-hidden txtwhite negrita b2-bot txthover1">
                     Subir video
