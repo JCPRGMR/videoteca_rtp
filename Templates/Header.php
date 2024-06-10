@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    (!isset($_SESSION['usuario'])) && header("Location: ../");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +32,14 @@
                     Subir video
                 </a> -->
             <?php endif;?>
-            <div class="w50px h50px br50p color1 pointer overflow-hidden ">
+            <div class=" h50px br50p color1 pointer f-row wrap">
                 <img src="../Images/rtp_mundo.jpg" alt="" width="50">
+                <div class="color9 txtwhite f-row jc-c a-c p10">
+                    <?= $_SESSION['usuario']['username'] ?>
+                </div>
+                <form action="../Php/Exit.php" method="post" class="color1 f-row jc-c a-c txtwhite color4">
+                    <button type="submit" name="salir" class="color1 h100p pointer txtwhite color4" value="<?= $_SESSION['usuario']['id_user'] ?>">SALIR</button>
+                </form>
             </div>
         </div>
     </header>

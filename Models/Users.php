@@ -9,7 +9,7 @@
                 $stmt->bindParam(1, $post->username, PDO::PARAM_STR);
                 $stmt->bindParam(2, $post->passkey, PDO::PARAM_STR);
                 $stmt->execute();
-                $response = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $response = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $response;
             } catch (PDOException $th) {
                 echo $th->getMessage();

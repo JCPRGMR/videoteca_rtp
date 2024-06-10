@@ -89,8 +89,8 @@ CREATE TABLE users_activities(
     id_fk_activity int,
     ip_user varchar(25),
     details text,
-    videos_activity_create datetime,
-    videos_activity_update datetime,
+    user_activity_create datetime,
+    user_activity_update datetime,
     Foreign Key (id_fk_user) REFERENCES users(id_user) ON DELETE CASCADE,
     Foreign Key (id_fk_video) REFERENCES videos(id_video) ON DELETE CASCADE,
     Foreign Key (id_fk_activity) REFERENCES activities(id_activity) ON DELETE CASCADE

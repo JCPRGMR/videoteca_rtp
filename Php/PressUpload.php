@@ -1,5 +1,10 @@
 <?php
     include_once '../Models/Videos.php';
+    include_once '../Models/Activities.php';
+    include_once '../Models/Users_activities.php';
+
+    session_start();
+
     $valor = strtoupper(substr($_POST['area'], 0, 3));
 
     $fecha = new DateTime();
@@ -16,5 +21,17 @@
     $_POST['cod_video'] = $codigo;
 
     Videos::Insertar((object) $_POST);
+    
+    (!Activities::Existe("SUBIENDO VIDEO")) && Activities::Insertar("SUBIENDO VIDEO");
+
+    $array = [
+        "id_user" => $_SESSION['usuario']['id_user'],
+        "id_video" => Videos::BuscarId($codigo),
+        "id_activity" => Activities::BuscarId("SUBIENDO VIDEO"),
+        "ip" => ($_SERVER['REMOTE_ADDR'] == "127.0.0.1") ? "localhost" : $_SERVER['REMOTE_ADDR'],
+        "details" => "EL USUARIO SUBIO UN VIDEO DESDE LA IP " . $_SERVER['REMOTE_ADDR'],
+    ];
+    Users_activities::Insert((object) $array);
+
 
     echo json_encode($_POST);

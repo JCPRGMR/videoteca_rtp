@@ -1,6 +1,22 @@
 <?php require_once '../Templates/Header.php'?>
 <?php require_once '../Models/Videos.php'?>
-<?php (isset($_POST['ver_video'])) ? $v = Videos::VideoData($_POST['ver_video']) : header("Location: Press.php");?>
+<?php 
+    include_once '../Models/Activities.php';
+    include_once '../Models/Users_activities.php';
+    (isset($_POST['ver_video'])) ? $v = Videos::VideoData($_POST['ver_video']) : header("Location: Press.php");
+    
+    
+    (!Activities::Existe("VISUALIZANDO VIDEO")) && Activities::Insertar("VISUALIZANDO VIDEO");
+
+    $array = [
+        "id_user" => $_SESSION['usuario']['id_user'],
+        "id_video" => Videos::BuscarId($v->cod_video),
+        "id_activity" => Activities::BuscarId("SUBIENDO VIDEO"),
+        "ip" => ($_SERVER['REMOTE_ADDR'] == "127.0.0.1") ? "localhost" : $_SERVER['REMOTE_ADDR'],
+        "details" => "EL USUARIO VIZUALIZO EL VIDEO " . $v->path_play . " DESDE LA IP " . $_SERVER['REMOTE_ADDR'],
+    ];
+    Users_activities::Insert((object) $array);
+?>
 <div class="w100p h100p color7 f-row gap10 wrap">
     <div class="w100p h100p flex-1">
         <video controls class="w100p h100p" controlsList="nodownload">
@@ -35,8 +51,9 @@
                     <input type="datetime" name="" id="" value="<?= $v->video_create ?>" readonly class="p10">
                 </div>
                 <button type="submit"></button>
-                <a href="/prensa/<?= $v->path_play ?>" class="p10 color3 negrita mayus" download="">Descargar</a>
+                <a href="/prensa/<?= $v->path_play ?>" aria-valuetext="<?= $v->cod_video ?>" id="d_video" class="p10 color3 negrita mayus" download="">Descargar</a>
             </div>
         </form>
     </div>
 </div>
+<script src="../JavaScripts/DownloadH.js"></script>

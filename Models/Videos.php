@@ -97,5 +97,17 @@
             } catch (PDOException $th) {
                 echo $th->getMessage();
             }
-        }   
+        }
+        public static function BuscarId($cod_video){
+            try {
+                $sql = "SELECT id_video FROM videos WHERE cod_video = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $cod_video, PDO::PARAM_STR);
+                $stmt->execute();
+                $resultado = $stmt->fetchColumn();
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
     }

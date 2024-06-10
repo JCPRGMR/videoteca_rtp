@@ -14,15 +14,19 @@
         <tbody id="tbody">
             <?php foreach(Videos::Mostrar(1) as $item):?>
                 <tr class="odd8">
-                    <td class="center"><?= $item->des_area ?></td>
-                    <td class="center"><?= $item->des_kind ?></td>
-                    <td class="center"><?= $item->title ?></td>
-                    <td class="center"><?= $item->details ?></td>
-                    <td class="center"><?= date_format(new DateTime($item->video_create), "d/m/Y") ?></td>
-                    <td class="center">
-                        <form action="Player.php" method="post">
-                            <button type="submit" name="ver_video" value="<?= $item->id_video ?>">Ver video</button>
-                        </form>
+                    <td class="center p10"><?= $item->des_area ?></td>
+                    <td class="center p10"><?= $item->des_kind ?></td>
+                    <td class="center p10"><?= $item->title ?></td>
+                    <td class="center p10"><?= $item->details ?></td>
+                    <td class="center p10"><?= date_format(new DateTime($item->video_create), "d/m/Y") ?></td>
+                    <td class="center p10">
+                        <?php if($item->path_play != null):?>
+                            <form action="Player.php" method="post">
+                                <button type="submit" name="ver_video" class="color2 negrita mayus" value="<?= $item->id_video ?>">Ver</button>
+                            </form>
+                        <?php else:?>
+                            ...Subiendo
+                        <?php endif;?>
                     </td>
                 </tr>
             <?php endforeach;?>

@@ -1,4 +1,5 @@
 <?php
+    include_once '../Connection/Connection.php';
     Class Departaments_areas extends Connection{
         public static function Existe($post){
             try {
@@ -27,6 +28,18 @@
                 $stmt->bindParam(3, Connection::$date_hour, PDO::PARAM_STR);
                 $stmt->bindParam(4, Connection::$date_hour, PDO::PARAM_STR);
                 $stmt->execute();
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
+        public static function Mostrar($depto){
+            try {
+                $sql = "SELECT * FROM view_areas WHERE id_fk_departament = ? ORDER BY departaments_areas_create DESC";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $depto, PDO::PARAM_STR);
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_OBJ);
+                return $resultado;
             } catch (PDOException $th) {
                 echo $th->getMessage();
             }

@@ -1,4 +1,7 @@
 <?php require_once '../Templates/Header.php'?>
+<?php require_once '../Models/Departaments_areas.php'?>
+<?php require_once '../Models/Departaments_kinds.php'?>
+<?php require_once '../Models/Departaments.php'?>
 <link rel="stylesheet" href="../Css/Spin_01.css">
 
 <div class="color7_a w100p h100vh f-col a-c jc-c gap20 fixed top0 v-hidden noselect" id="spin_load">
@@ -14,10 +17,24 @@
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Area de cobertura</label>
                 <input type="search" name="area" id="area" placeholder="Area de cobertura" class="p10 br5">
+                <div class="relative">
+                    <div class="f-col absolute w100p v-hidden" id="g_area">
+                        <?php foreach(Departaments_areas::Mostrar(Departaments::BuscarId("PRENSA")) as $item):?>
+                            <label for="" class="p20 color8 hover7 pointer txtwhite negrita" onclick="LabelToInput('area', this)"><?= $item->des_area?></label>
+                        <?php endforeach;?>
+                    </div>
+                </div>
             </div>
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Tipo de contenido</label>
                 <input type="search" name="tipo" id="tipo" placeholder="Tipo de contenido" class="p10 br5">
+                <div class="relative">
+                    <div class="f-col absolute w100p v-hidden" id="g_tipo">
+                        <?php foreach(Departaments_kinds::Mostrar(Departaments::BuscarId("PRENSA")) as $item):?>
+                            <label for="" class="p20 color8 hover7 pointer txtwhite negrita" onclick="LabelToInput('tipo', this)"><?= $item->des_kind?></label>
+                        <?php endforeach;?>
+                    </div>
+                </div>
             </div>
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Fecha del evento</label>
@@ -48,3 +65,4 @@
     </div>
 </div>
 <script src="../JavaScripts/SubirVideo7.js"></script>
+<script src="../JavaScripts/Select.js"></script>
