@@ -1,6 +1,6 @@
-<?php require_once '../Templates/Header.php'?>
-<?php require_once '../Models/Videos.php'?>
 <?php 
+    require_once '../Templates/Header.php';
+    require_once '../Models/Videos.php';
     include_once '../Models/Activities.php';
     include_once '../Models/Users_activities.php';
     (isset($_POST['ver_video'])) ? $v = Videos::VideoData($_POST['ver_video']) : header("Location: Press.php");
@@ -18,12 +18,12 @@
     Users_activities::Insert((object) $array);
 ?>
 <div class="w100p h100p color7 f-row gap10 wrap">
-    <div class="w100p h100p flex-1">
+    <div class="w100p">
         <video controls class="w100p h100p" controlsList="nodownload">
             <source src="/prensa_videoteca_rtp_2/<?= $v->path_play ?>" type="">
         </video>
     </div>
-    <div class="w20p h100p">
+    <div class="w100p h100p">
         <form action="" method="post" class="p10">
             <div class="f-col gap10">
                 <div class="f-col gap10">

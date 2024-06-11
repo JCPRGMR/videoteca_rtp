@@ -64,5 +64,5 @@
         </div>
     </div>
 </div>
-<script src="../JavaScripts/SubirVideo7.js"></script>
+<script src="../JavaScripts/SubirVideo8.js"></script>
 <script src="../JavaScripts/Select.js"></script>

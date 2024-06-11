@@ -115,6 +115,7 @@ var servicioFile = function(obj) {
                 RequestPath.onreadystatechange = function() {
                     if (RequestPath.readyState == 4 && RequestPath.status == 200) {
                         // console.log("Fila actualizada")
+                        location.href = "../Views/Press.php"
                     }
                 }
                 RequestPath.send(PathSend)
