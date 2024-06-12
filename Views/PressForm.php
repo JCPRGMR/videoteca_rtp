@@ -51,12 +51,16 @@
                 <input type="search" name="detalles" id="detalles" placeholder="Detalles de contenido" class="p10 br5">
             </div>
         </div>
-        <div class="f-col p5 gap10 flex-1 txtwhite">
+        <div class="f-col p5 gap10 flex-1 txtwhite" id="filecontainer">
             <input type="file" name="" id="VideoContainer">
         </div>
         <div class="f-row gap20 wrap">
             <div class="f-col p5 gap10 flex-1">
                 <button type="submit" class="p10 negrita color5 mayus pointer space-nw" id="subirVideo">Subir Video</button>
+            </div>
+            <div class="f-row flex-1">
+                <button type="submit" class="p10 negrita color2 mayus pointer space-nw" id="EnlazarVideo">Enlazar</button>
+                <button type="submit" class="p10 negrita color2 mayus pointer space-nw" id="subirenlace" disabled>Guardar enlace</button>
             </div>
             <div class="f-col p5 gap10 flex-1">
                 <a href="Press.php" class="p10 negrita color4 txtwhite mayus pointer center space-nw">Volver atras</a>
@@ -64,5 +68,6 @@
         </div>
     </div>
 </div>
-<script src="../JavaScripts/SubirVideo8.js"></script>
+<script src="../JavaScripts/SubirVideo10.js"></script>
+<script src="../JavaScripts/LinkVideo1.js"></script>
 <script src="../JavaScripts/Select.js"></script>

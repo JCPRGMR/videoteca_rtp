@@ -1,3 +1,4 @@
+// alert('Nuevo cambio')
 window.onload = function() {
     let btnSubirVideo = document.getElementById("subirVideo");
     btnSubirVideo.onclick = function() {
@@ -13,7 +14,6 @@ window.onload = function() {
             detalles: document.getElementById("detalles").value,
             departamento: "PRENSA"
         }).toString();
-        
         var xhr = new XMLHttpRequest();
         xhr.open("POST", '../Php/PressUpload.php', false);
         xhr.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
@@ -33,7 +33,7 @@ window.onload = function() {
                         var spin_text = document.getElementById("spin_text")
                         spin_text.textContent = "Video Subido Correctamente"
                         setTimeout(() => {
-                            location.href = "/Views/Press.php"
+                            location.href = "../Views/Press.php"
                         }, 1500);
                     } else {
                         console.log('Error al subir el archivo')
@@ -41,8 +41,7 @@ window.onload = function() {
                 });
             }
         };
-        xhr.send(SendParams);        
-
+        xhr.send(SendParams);
     }
 }
 var servicioFile = function(obj) {
@@ -101,8 +100,13 @@ var servicioFile = function(obj) {
             inicio = fin;
             fin = inicio + size;
             if (inicio < longitud) {
+                var spin_text = document.getElementById("spin_text")
                 bloque = blob.slice(inicio, fin);
                 upload(obj).then(resultado);
+                
+                var porcentage = (inicio * 100) / longitud
+                // spin_text.textContent = "Subiendo video... " + inicio.toString() + "/" + longitud.toString()
+                spin_text.textContent = "Subiendo video... " + Math.round(porcentage).toString() + " %"
             } else {
                 var PathSend = new URLSearchParams({
                     path: obj.name.toUpperCase() + '.' + archivo.name.split('.').pop(),
@@ -115,7 +119,7 @@ var servicioFile = function(obj) {
                 RequestPath.onreadystatechange = function() {
                     if (RequestPath.readyState == 4 && RequestPath.status == 200) {
                         // console.log("Fila actualizada")
-                        location.href = "../Views/Press.php"
+                        // location.href = "../Views/Press.php"
                     }
                 }
                 RequestPath.send(PathSend)

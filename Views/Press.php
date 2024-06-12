@@ -25,7 +25,10 @@
                                 <button type="submit" name="ver_video" class="color2 negrita mayus" value="<?= $item->id_video ?>">Ver</button>
                             </form>
                         <?php else:?>
-                            ...Subiendo
+                            <form action="Player.php" method="post" class="relative overflow-hidden">
+                                <label for="link_video" class="pointer p10 color2 black negrita mayus" aria-valuetext="<?= $item->id_video?>">enlazar</label>
+                                <input type="file" name="" id="link_video" class="absolute v-hidden">
+                            </form>
                         <?php endif;?>
                     </td>
                 </tr>

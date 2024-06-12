@@ -4,8 +4,7 @@
     include_once '../Models/Activities.php';
     include_once '../Models/Users_activities.php';
     (isset($_POST['ver_video'])) ? $v = Videos::VideoData($_POST['ver_video']) : header("Location: Press.php");
-    
-    
+    (!$v) && header("Location: Press.php");
     (!Activities::Existe("VISUALIZANDO VIDEO")) && Activities::Insertar("VISUALIZANDO VIDEO");
 
     $array = [
@@ -20,7 +19,7 @@
 <div class="w100p h100p color7 f-row gap10 wrap">
     <div class="w100p">
         <video controls class="w100p h100p" controlsList="nodownload">
-            <source src="/prensa/<?= $v->path_play ?>" type="">
+            <source src="/videoteca_rtp_prensa_2/<?= $v->path_play ?>" type="">
         </video>
     </div>
     <div class="w100p h100p">
