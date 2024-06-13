@@ -1,6 +1,5 @@
 <?php require_once '../Templates/Header.php'?>
 <?php require_once '../Models/Videos.php'?>
-
 <div class="w100p h100p color7 overflow-auto">
     <table class="w100p collapse txtwhite">
         <thead class="color1 ">
@@ -36,4 +35,4 @@
         </tbody>
     </table>
 </div>
-<script src="../JavaScripts/SearchVideoPress.js"></script>
+<script src="../JavaScripts/SearchVideoPress3.js"></script>

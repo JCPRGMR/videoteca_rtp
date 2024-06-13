@@ -58,9 +58,9 @@
             <div class="f-col p5 gap10 flex-1">
                 <button type="submit" class="p10 negrita color5 mayus pointer space-nw" id="subirVideo">Subir Video</button>
             </div>
-            <div class="f-row flex-1">
+            <div class="f-col flex-1">
                 <button type="submit" class="p10 negrita color2 mayus pointer space-nw" id="EnlazarVideo">Enlazar</button>
-                <button type="submit" class="p10 negrita color2 mayus pointer space-nw" id="subirenlace" disabled>Guardar enlace</button>
+                <button type="submit" class="p10 negrita color7 mayus space-nw" id="subirenlace" disabled>Guardar enlace</button>
             </div>
             <div class="f-col p5 gap10 flex-1">
                 <a href="Press.php" class="p10 negrita color4 txtwhite mayus pointer center space-nw">Volver atras</a>

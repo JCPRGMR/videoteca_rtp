@@ -2,28 +2,19 @@
     include_once '../Models/Videos.php';
     include_once '../Models/Activities.php';
     include_once '../Models/Users_activities.php';
-
     session_start();
-
     $valor = strtoupper(substr($_POST['area'], 0, 3));
-
     $fecha = new DateTime();
     $fecha_formateada = $fecha->format("Ymd");
-
     $codigo = $fecha_formateada . $valor;
     $num_cod = Videos::BuscarCodVideo($codigo) + 1;
     $codigo .= sprintf("%03d", $num_cod);
-
     include_once '../Php/Areas.php';
     include_once '../Php/Tipos.php';
     include_once '../Php/Departamentos.php';
-    
     $_POST['cod_video'] = $codigo;
-
     Videos::Insertar((object) $_POST);
-    
     (!Activities::Existe("SUBIENDO VIDEO")) && Activities::Insertar("SUBIENDO VIDEO");
-
     $array = [
         "id_user" => $_SESSION['usuario']['id_user'],
         "id_video" => Videos::BuscarId($codigo),
@@ -32,6 +23,4 @@
         "details" => "EL USUARIO SUBIO UN VIDEO DESDE LA IP " . $_SERVER['REMOTE_ADDR'],
     ];
     Users_activities::Insert((object) $array);
-
-
     echo json_encode($_POST);

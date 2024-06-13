@@ -85,15 +85,42 @@
             }
         }
         public static function Buscar($post) {
-            
+            $valor = "%" . $post->buscar . "%";
             try {
-                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ? AND des_area LIKE ?";
+                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ? AND des_area LIKE ? OR des_kind LIKE ?";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindParam(1, $post->Departament, PDO::PARAM_STR);
-                $stmt->bindParam(2, $post, PDO::PARAM_STR);
+                $stmt->bindParam(2, $valor, PDO::PARAM_STR);
+                $stmt->bindParam(3, $valor, PDO::PARAM_STR);
+                $post->buscar = explode(" ", $post->buscar);
+                $sql .= " OR (";
+                for ($i = 0; $i < count($post->buscar); $i++) {
+                    $sql .= "title LIKE ?";
+                    ($i < count($post->buscar) - 1) && $sql .= " AND ";
+                }
+                $sql .= ") OR (";
+                for ($i = 0; $i < count($post->buscar); $i++) {
+                    $sql .= "details LIKE ?";
+                    ($i < count($post->buscar) - 1) && $sql .= " AND ";
+                }
+                $sql .= ")";
+                // AÑADIENDO BINPARAMS
+                $j = 1;
+                foreach ($post->buscar as $word) {
+                    $word = "%". $word ."%";
+                    $stmt->bindParam($j, $word);
+                    $j++;
+                }
+                $j = 1;
+                foreach ($post->buscar as $word) {
+                    $word = "%". $word ."%";
+                    $stmt->bindParam($j, $word);
+                    $j++;
+                }
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $resultado;
+                return $sql;
+                // return $resultado;
             } catch (PDOException $th) {
                 echo $th->getMessage();
             }
@@ -126,19 +153,19 @@
                     date_user,
                     video_create,
                     video_update
-                ) VALUES(?,?,?,?, ?,?,?,?,?)";
+                ) VALUES(?,?,?,?, ?,?,?,?,?, ?,?)";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindParam(1, $post->cod_video, PDO::PARAM_STR);
                 $stmt->bindParam(2, $post->descripcion, PDO::PARAM_STR);
-                $stmt->bindParam(3, $post->path_play, PDO::PARAM_STR);
-                $stmt->bindParam(3, $post->name_file, PDO::PARAM_STR);
                 $stmt->bindParam(3, $post->detalles, PDO::PARAM_STR);
-                $stmt->bindParam(4, $post->area, PDO::PARAM_STR);
-                $stmt->bindParam(5, $post->tipo, PDO::PARAM_STR);
-                $stmt->bindParam(6, $post->departamento, PDO::PARAM_STR);
-                $stmt->bindParam(7, $post->fecha, PDO::PARAM_STR);
-                $stmt->bindParam(8, Connection::$date_hour, PDO::PARAM_STR);
-                $stmt->bindParam(9, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(4, $post->path_file, PDO::PARAM_STR);
+                $stmt->bindParam(5, $post->file, PDO::PARAM_STR);
+                $stmt->bindParam(6, $post->area, PDO::PARAM_STR);
+                $stmt->bindParam(7, $post->tipo, PDO::PARAM_STR);
+                $stmt->bindParam(8, $post->departamento, PDO::PARAM_STR);
+                $stmt->bindParam(9, $post->fecha, PDO::PARAM_STR);
+                $stmt->bindParam(10, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(11, Connection::$date_hour, PDO::PARAM_STR);
                 $stmt->execute();
             } catch (PDOException $th) {
                 echo $th->getMessage();
