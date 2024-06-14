@@ -17,7 +17,7 @@
     $_POST['cod_video'] = $codigo;
 
     $_POST['file'] = pathinfo($_POST['file'], PATHINFO_FILENAME);
-    $_POST['path_file'] = pathinfo($_POST['path_file'], PATHINFO_FILENAME) . ".mp4";
+    $_POST['path_file'] = pathinfo($_POST['path_file'], PATHINFO_FILENAME) . "." . pathinfo($_POST['path_file'], PATHINFO_EXTENSION);
 
     Videos::InsertarEnlace((object) $_POST);
     (!Activities::Existe("SUBIENDO VIDEO")) && Activities::Insertar("SUBIENDO VIDEO");

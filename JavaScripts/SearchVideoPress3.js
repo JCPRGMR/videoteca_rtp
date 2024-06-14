@@ -1,9 +1,10 @@
 // alert("consulta arreglada")
 var search = document.getElementById("search")
 search.addEventListener('input', function(){
+    var Departamento = search.getAttribute("aria-valuetext")
     var RequestVideo = new XMLHttpRequest()
     var VideoSearchParam = new URLSearchParams({
-        Departament: "PRENSA",
+        Departament: search.id,
         buscar: search.value
     })
     var tbody = document.getElementById("tbody")
@@ -20,7 +21,7 @@ search.addEventListener('input', function(){
                         <td class="center p10" title="${element.des_kind}">${element.des_kind}</td>
                         <td class="center p10" title="${element.title}">${element.title}</td>
                         <td class="center p10" title="${element.details}">${element.details}</td>
-                        <td class="center p10" title="${element.date_create}">${element.date_create}</td>
+                        <td class="center p10" title="${element.date_create}">${element.video_create.split(" ")[0]}</td>
                         <td class="center p10">
                             ${(element.path_play != null) ? `
                                 <form action="Player.php" method="post">

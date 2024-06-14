@@ -95,3 +95,7 @@ CREATE TABLE users_activities(
     Foreign Key (id_fk_video) REFERENCES videos(id_video) ON DELETE CASCADE,
     Foreign Key (id_fk_activity) REFERENCES activities(id_activity) ON DELETE CASCADE
 );
+
+INSERT INTO videoteca_rtp.departaments(des_departament, departament_create, departament_update) VALUES
+("PRENSA", NOW(), NOW()),
+("PROGRAMACION", NOW(), NOW());

@@ -17,7 +17,7 @@
                     <td class="center p10"><?= $item->des_kind ?></td>
                     <td class="center p10"><?= $item->title ?></td>
                     <td class="center p10"><?= $item->details ?></td>
-                    <td class="center p10"><?= date_format(new DateTime($item->video_create), "d/m/Y") ?></td>
+                    <td class="center p10"><?= date_format(new DateTime($item->video_create), "Y-m-d") ?></td>
                     <td class="center p10">
                         <?php if($item->path_play != null):?>
                             <form action="Player.php" method="post">

@@ -19,7 +19,7 @@
 <div class="w100p h100p color7 f-row gap10 wrap">
     <div class="w100p">
         <video controls class="w100p h100p" controlsList="nodownload">
-            <source src="/videoteca_rtp_prensa_2/<?= $v->path_play ?>" type="">
+            <source src="/<?= ($v->id_fk_departament == 2) ? "videoteca_rtp_programacion_2" : "videoteca_rtp_prensa_2" ?>/<?= $v->path_play ?>" type="">
         </video>
     </div>
     <div class="w100p h100p">
@@ -27,11 +27,11 @@
             <div class="f-col gap10">
                 <div class="f-col gap10">
                     <label for="" class="txtwhite negrita">Descripción del evento</label>
-                <textarea name="" id="" placeholder="Descripcion del evento" class="negrita fz15 p10" readonly><?= $v->title?></textarea>
+                    <textarea name="" id="" placeholder="Descripcion del evento" class="negrita fz15 p10" readonly><?= $v->title?></textarea>
                 </div>
                 <div class="f-col gap10">
                     <label for="" class="txtwhite negrita">Detalles de contenido</label>
-                <textarea name="" id="" placeholder="Detalle de contenido" class="p10" readonly><?= $v->details ?></textarea>
+                    <textarea name="" id="" placeholder="Detalle de contenido" class="p10" readonly><?= $v->details ?></textarea>
                 </div>
                 <div class="f-col gap10">
                     <label for="" class="txtwhite negrita">Area de cobertura</label>

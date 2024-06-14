@@ -87,7 +87,7 @@
         public static function Buscar($post) {
             $valor = "%" . $post->buscar . "%";
             try {
-                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = :depa AND (des_area LIKE :area OR des_kind LIKE :kind)";
+                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = :depa AND des_area LIKE :area OR des_kind LIKE :kind";
                 $post->buscar = explode(" ", $post->buscar);
                 $titleConditions = [];
                 $detailConditions = [];
@@ -102,9 +102,9 @@
                     $sql .= " OR (" . implode(" AND ", $detailConditions) . ")";
                 }
                 $stmt = Connection::Conectar()->prepare($sql);
-                $stmt->bindValue(":depa", $post->Departament, PDO::PARAM_STR);
-                $stmt->bindValue(":area", $valor, PDO::PARAM_STR);
-                $stmt->bindValue(":kind", $valor, PDO::PARAM_STR);
+                $stmt->bindValue(":depa", $post->Departament);
+                $stmt->bindValue(":area", $valor);
+                $stmt->bindValue(":kind", $valor);
                 foreach ($post->buscar as $i => $word) {
                     $likeWord = "%" . $word . "%";
                     $title = ":title_" . $i;

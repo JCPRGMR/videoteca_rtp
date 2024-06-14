@@ -1,22 +1,10 @@
 // alert(1)
 var EnlazarVideo = document.getElementById("EnlazarVideo")
 var VideoContainer = document.getElementById("VideoContainer")
-var filecontainer = document.getElementById("filecontainer")
 var subirenlace = document.getElementById("subirenlace")
 
-EnlazarVideo.onclick = function(){
-    EnlazarVideo.disabled = true
-    EnlazarVideo.classList = "p10 negrita color7 mayus space-nw"
-    filecontainer.innerHTML = /*html*/`
-    <label for="" class="negrita mayus">Enlazar video</label>
-    <input type="search" name="" id="file" placeholder="Escriba o copie la ruta de archivo" class="p10 br5">`
-    subirenlace.disabled = false
-    subirenlace.classList = "p10 negrita color2 mayus pointer space-nw"
-}
-
 subirenlace.onclick = function(){
-    var file = document.getElementById("file")
-    if(file.value.length > 0){
+    if(VideoContainer.value.length > 0){
         var PathSend = new URLSearchParams({
             area: document.getElementById("area").value,
             tipo: document.getElementById("tipo").value,
@@ -24,8 +12,8 @@ subirenlace.onclick = function(){
             descripcion: document.getElementById("descripcion").value,
             detalles: document.getElementById("detalles").value,
             departamento: "PRENSA",
-            file: file.value,
-            path_file: file.value
+            file: VideoContainer.value,
+            path_file: VideoContainer.value
         }).toString()
         var RequestPath = new XMLHttpRequest()
         RequestPath.open("POST", "../Php/UpgradeLink.php", true)
@@ -33,7 +21,8 @@ subirenlace.onclick = function(){
         RequestPath.onreadystatechange = function() {
             if (RequestPath.readyState == 4 && RequestPath.status == 200) {
                 var response = JSON.parse(RequestPath.responseText)
-                console.log(response)
+                window.history.back()
+                // console.log(response)
             }
         }
         RequestPath.send(PathSend)

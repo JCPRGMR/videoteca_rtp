@@ -20,10 +20,5 @@ SELECT des_kind, id_fk_departament, departaments_kinds_create FROM departaments_
 INNER JOIN departaments ON id_departament = id_fk_departament
 INNER JOIN kinds ON id_kind = id_fk_kind;
 
-SELECT * FROM view_videos ORDER BY video_create DESC
-
 
 INSERT INTO users(username, passkey, user_create, user_update) VALUES("admin","admin",NOW(),NOW())
-
-
-SELECT * FROM view_videos WHERE id_fk_departament = 1 AND des_area LIKE '%SD%' OR des_kind LIKE '%SD%' OR (title LIKE '%de%' ) OR (details LIKE '%de%' );
