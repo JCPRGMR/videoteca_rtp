@@ -87,40 +87,34 @@
         public static function Buscar($post) {
             $valor = "%" . $post->buscar . "%";
             try {
-                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ? AND des_area LIKE ? OR des_kind LIKE ?";
-                $stmt = Connection::Conectar()->prepare($sql);
-                $stmt->bindParam(1, $post->Departament, PDO::PARAM_STR);
-                $stmt->bindParam(2, $valor, PDO::PARAM_STR);
-                $stmt->bindParam(3, $valor, PDO::PARAM_STR);
+                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = :depa AND (des_area LIKE :area OR des_kind LIKE :kind)";
                 $post->buscar = explode(" ", $post->buscar);
-                $sql .= " OR (";
+                $titleConditions = [];
+                $detailConditions = [];
                 for ($i = 0; $i < count($post->buscar); $i++) {
-                    $sql .= "title LIKE ?";
-                    ($i < count($post->buscar) - 1) && $sql .= " AND ";
+                    $titleConditions[] = "title LIKE :title_" . $i;
+                    $detailConditions[] = "details LIKE :detail_" . $i;
                 }
-                $sql .= ") OR (";
-                for ($i = 0; $i < count($post->buscar); $i++) {
-                    $sql .= "details LIKE ?";
-                    ($i < count($post->buscar) - 1) && $sql .= " AND ";
+                if (!empty($titleConditions)) {
+                    $sql .= " OR (" . implode(" AND ", $titleConditions) . ")";
                 }
-                $sql .= ")";
-                // AÑADIENDO BINPARAMS
-                $j = 1;
-                foreach ($post->buscar as $word) {
-                    $word = "%". $word ."%";
-                    $stmt->bindParam($j, $word);
-                    $j++;
+                if (!empty($detailConditions)) {
+                    $sql .= " OR (" . implode(" AND ", $detailConditions) . ")";
                 }
-                $j = 1;
-                foreach ($post->buscar as $word) {
-                    $word = "%". $word ."%";
-                    $stmt->bindParam($j, $word);
-                    $j++;
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindValue(":depa", $post->Departament, PDO::PARAM_STR);
+                $stmt->bindValue(":area", $valor, PDO::PARAM_STR);
+                $stmt->bindValue(":kind", $valor, PDO::PARAM_STR);
+                foreach ($post->buscar as $i => $word) {
+                    $likeWord = "%" . $word . "%";
+                    $title = ":title_" . $i;
+                    $detail = ":detail_" . $i;
+                    $stmt->bindValue($title, $likeWord);
+                    $stmt->bindValue($detail, $likeWord);
                 }
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $sql;
-                // return $resultado;
+                return $resultado;
             } catch (PDOException $th) {
                 echo $th->getMessage();
             }
