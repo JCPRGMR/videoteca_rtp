@@ -3,7 +3,6 @@ function filtrarTextbox(inputId, contenedorId) {
     var contenedor = document.getElementById(contenedorId);
     var labels = contenedor.querySelectorAll('label');
     var ocultarContenedor;
-
     input.addEventListener('focus', function(){
         contenedor.style.visibility = "visible";
     });
@@ -14,7 +13,7 @@ function filtrarTextbox(inputId, contenedorId) {
     input.addEventListener('focusout', function(){
         ocultarContenedor = setTimeout(function() {
             contenedor.style.visibility = "hidden";
-        }, 100); // Se establece un tiempo de espera de 100 milisegundos (ajustable según necesidades)
+        }, 300); // Se establece un tiempo de espera de 100 milisegundos (ajustable según necesidades)
     });
 
     input.addEventListener('input', function() {

@@ -208,4 +208,16 @@
                 echo $th->getMessage();
             }
         }
+        public static function VerificarParaEditar($id_video){
+            try {
+                $sql = "SELECT title, details, des_area, des_kind, date_user, id_video FROM view_videos WHERE id_video = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $id_video, PDO::PARAM_STR);
+                $stmt->execute();
+                $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th;
+            }
+        }
     }
