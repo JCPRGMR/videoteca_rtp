@@ -1,13 +1,91 @@
 <?php
     require_once '../Connection/Connection.php';
     Class Videos extends Connection{
-        public static function Mostrar($departament){
+        public static function MostrarPrensa(){
             try {
-                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = ? ORDER BY video_create DESC";
+                $sql = "SELECT * FROM view_videos_prensa ORDER BY video_create DESC";
                 $stmt = Connection::Conectar()->prepare($sql);
-                $stmt->bindParam(1, $departament, PDO::PARAM_STR);
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_OBJ);
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
+        public static function MostrarProgramacion(){
+            try {
+                $sql = "SELECT * FROM view_videos_programacion ORDER BY video_create DESC";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_OBJ);
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
+        public static function BuscarPrensa($post) {
+            $valor = "%" . $post->buscar . "%";
+            try {
+                $sql = "SELECT * FROM view_videos_prensa WHERE des_area LIKE :area OR des_kind LIKE :kind";
+                $post->buscar = explode(" ", $post->buscar);
+                $titleConditions = [];
+                $detailConditions = [];
+                for ($i = 0; $i < count($post->buscar); $i++) {
+                    $titleConditions[] = "title LIKE :title_" . $i;
+                    $detailConditions[] = "details LIKE :detail_" . $i;
+                }
+                if (!empty($titleConditions)) {
+                    $sql .= " OR (" . implode(" AND ", $titleConditions) . ")";
+                }
+                if (!empty($detailConditions)) {
+                    $sql .= " OR (" . implode(" AND ", $detailConditions) . ")";
+                }
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindValue(":area", $valor);
+                $stmt->bindValue(":kind", $valor);
+                foreach ($post->buscar as $i => $word) {
+                    $likeWord = "%" . $word . "%";
+                    $title = ":title_" . $i;
+                    $detail = ":detail_" . $i;
+                    $stmt->bindValue($title, $likeWord);
+                    $stmt->bindValue($detail, $likeWord);
+                }
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
+        public static function BuscarProgramacion($post) {
+            $valor = "%" . $post->buscar . "%";
+            try {
+                $sql = "SELECT * FROM view_videos_programacion WHERE des_area LIKE :area OR des_kind LIKE :kind";
+                $post->buscar = explode(" ", $post->buscar);
+                $titleConditions = [];
+                $detailConditions = [];
+                for ($i = 0; $i < count($post->buscar); $i++) {
+                    $titleConditions[] = "title LIKE :title_" . $i;
+                    $detailConditions[] = "details LIKE :detail_" . $i;
+                }
+                if (!empty($titleConditions)) {
+                    $sql .= " OR (" . implode(" AND ", $titleConditions) . ")";
+                }
+                if (!empty($detailConditions)) {
+                    $sql .= " OR (" . implode(" AND ", $detailConditions) . ")";
+                }
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindValue(":area", $valor);
+                $stmt->bindValue(":kind", $valor);
+                foreach ($post->buscar as $i => $word) {
+                    $likeWord = "%" . $word . "%";
+                    $title = ":title_" . $i;
+                    $detail = ":detail_" . $i;
+                    $stmt->bindValue($title, $likeWord);
+                    $stmt->bindValue($detail, $likeWord);
+                }
+                $stmt->execute();
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $resultado;
             } catch (PDOException $th) {
                 echo $th->getMessage();
@@ -79,41 +157,6 @@
                 $stmt->bindParam(1, $id_video, PDO::PARAM_STR);
                 $stmt->execute();
                 $resultado = $stmt->fetch(PDO::FETCH_OBJ);
-                return $resultado;
-            } catch (PDOException $th) {
-                echo $th->getMessage();
-            }
-        }
-        public static function Buscar($post) {
-            $valor = "%" . $post->buscar . "%";
-            try {
-                $sql = "SELECT * FROM view_videos WHERE id_fk_departament = :depa AND des_area LIKE :area OR des_kind LIKE :kind";
-                $post->buscar = explode(" ", $post->buscar);
-                $titleConditions = [];
-                $detailConditions = [];
-                for ($i = 0; $i < count($post->buscar); $i++) {
-                    $titleConditions[] = "title LIKE :title_" . $i;
-                    $detailConditions[] = "details LIKE :detail_" . $i;
-                }
-                if (!empty($titleConditions)) {
-                    $sql .= " OR (" . implode(" AND ", $titleConditions) . ")";
-                }
-                if (!empty($detailConditions)) {
-                    $sql .= " OR (" . implode(" AND ", $detailConditions) . ")";
-                }
-                $stmt = Connection::Conectar()->prepare($sql);
-                $stmt->bindValue(":depa", $post->Departament);
-                $stmt->bindValue(":area", $valor);
-                $stmt->bindValue(":kind", $valor);
-                foreach ($post->buscar as $i => $word) {
-                    $likeWord = "%" . $word . "%";
-                    $title = ":title_" . $i;
-                    $detail = ":detail_" . $i;
-                    $stmt->bindValue($title, $likeWord);
-                    $stmt->bindValue($detail, $likeWord);
-                }
-                $stmt->execute();
-                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $resultado;
             } catch (PDOException $th) {
                 echo $th->getMessage();

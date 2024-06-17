@@ -1,5 +1,6 @@
 <?php
-    require_once '../Connection/Connection.php';
+    $file_exists = file_exists('../Connection/Connection.php');
+    require_once $file_exists ? '../Connection/Connection.php' : 'Connection/Connection.php';
 
     class Users extends Connection{
         public static function Validated_login(object $post){

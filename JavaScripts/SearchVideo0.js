@@ -4,7 +4,7 @@ search.addEventListener('input', function(){
     var Departamento = search.getAttribute("aria-valuetext")
     var RequestVideo = new XMLHttpRequest()
     var VideoSearchParam = new URLSearchParams({
-        Departament: search.id,
+        Departament: Departamento,
         buscar: search.value
     })
     var tbody = document.getElementById("tbody")
@@ -14,6 +14,7 @@ search.addEventListener('input', function(){
     RequestVideo.onreadystatechange = function() {
         if (RequestVideo.readyState == 4 && RequestVideo.status == 200) {
             var tabla = JSON.parse(RequestVideo.responseText)
+            console.log(tabla)
             tabla.forEach(element => {
                 tbody.innerHTML += /*html*/`
                     <tr class="odd8">

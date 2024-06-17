@@ -1,4 +1,10 @@
-
+<?php
+    session_start();
+    include_once 'Models/Users.php';
+    if(isset($_SESSION['usuario'])){
+        (Users::Validated_login((object) $_SESSION['usuario'])) && header("Location: Views/Press.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

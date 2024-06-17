@@ -127,6 +127,9 @@ input, textarea, button{
 .pointer{
     cursor: pointer;
 }
+.default{
+    cursor: default;
+}
 /**
  * PADDING's
  */

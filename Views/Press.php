@@ -11,7 +11,7 @@
             <th class="p10">ACCIONES</th>
         </thead>
         <tbody id="tbody">
-            <?php foreach(Videos::Mostrar(1) as $item):?>
+            <?php foreach(Videos::MostrarPrensa() as $item):?>
                 <tr class="odd8">
                     <td class="center p10"><?= $item->des_area ?></td>
                     <td class="center p10"><?= $item->des_kind ?></td>
@@ -35,4 +35,4 @@
         </tbody>
     </table>
 </div>
-<script src="../JavaScripts/SearchVideoPress3.js"></script>
+<script src="../JavaScripts/SearchVideo0.js"></script>
