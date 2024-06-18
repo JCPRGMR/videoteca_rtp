@@ -5,6 +5,8 @@ var subirenlace = document.getElementById("subirenlace")
 
 subirenlace.onclick = function(){
     if(VideoContainer.value.length > 0){
+        let archivo = VideoContainer.value.files[0]
+
         var PathSend = new URLSearchParams({
             area: document.getElementById("area").value,
             tipo: document.getElementById("tipo").value,
@@ -13,7 +15,12 @@ subirenlace.onclick = function(){
             detalles: document.getElementById("detalles").value,
             departamento: "PROGRAMACION",
             file: VideoContainer.value,
-            path_file: VideoContainer.value
+            path_file: VideoContainer.value,
+
+            nro_agreement: document.getElementById("nro_contrato").value,
+            agreement: document.getElementById("proveedor").value,
+            agreement_expiration: document.getElementById("fecha_vencimiento").value,
+            video_update: archivo
         }).toString()
         var RequestPath = new XMLHttpRequest()
         RequestPath.open("POST", "../Php/UpgradeLink.php", true)
@@ -22,7 +29,6 @@ subirenlace.onclick = function(){
             if (RequestPath.readyState == 4 && RequestPath.status == 200) {
                 var response = JSON.parse(RequestPath.responseText)
                 window.history.back()
-                // console.log(response)
             }
         }
         RequestPath.send(PathSend)

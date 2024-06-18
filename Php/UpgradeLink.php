@@ -2,6 +2,7 @@
     include_once '../Models/Videos.php';
     include_once '../Models/Activities.php';
     include_once '../Models/Users_activities.php';
+    include_once '../Models/Agreements.php';
     session_start();
     $valor = strtoupper(substr($_POST['area'], 0, 3));
     $fecha = new DateTime();
@@ -20,6 +21,12 @@
     $_POST['path_file'] = pathinfo($_POST['path_file'], PATHINFO_FILENAME) . "." . pathinfo($_POST['path_file'], PATHINFO_EXTENSION);
 
     Videos::InsertarEnlace((object) $_POST);
+
+    if(isset($_POST['nro_agreement'])){
+        $_POST['id_fk_video'] = Videos::BuscarId($codigo);
+        Agreements::Insertar((object) $_POST);
+    }
+
     (!Activities::Existe("SUBIENDO VIDEO")) && Activities::Insertar("SUBIENDO VIDEO");
     $array = [
         "id_user" => $_SESSION['usuario']['id_user'],

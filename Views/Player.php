@@ -4,7 +4,7 @@
     include_once '../Models/Activities.php';
     include_once '../Models/Users_activities.php';
     (isset($_POST['ver_video'])) ? $v = Videos::VideoData($_POST['ver_video']) : header("Location: Press.php");
-    (!$v) && header("Location: Press.php");
+    // (!$v) && header("Location: Press.php");
     (!Activities::Existe("VISUALIZANDO VIDEO")) && Activities::Insertar("VISUALIZANDO VIDEO");
 
     $array = [

@@ -73,9 +73,9 @@ CREATE TABLE videos(
     Foreign Key (id_fk_kind) REFERENCES kinds(id_kind) ON DELETE CASCADE,
     Foreign Key (id_fk_departament) REFERENCES departaments(id_departament) ON DELETE CASCADE
 );
-CREATE TABLE agreeement(
-    id_agreeement bigint primary key auto_increment,
-    nro_agreeemnt text,
+CREATE TABLE agreement(
+    id_agreement bigint primary key auto_increment,
+    nro_agreement text,
     agreement text,
     agreement_expiration date,
     id_fk_video bigint,
