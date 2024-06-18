@@ -55,18 +55,13 @@
                     </svg>
                 </a>
             <?php endif;?>
-            <div class=" h50px br50p color1 f-col wrap">
-                <img src="../Images/rtp_mundo.jpg" alt="" width="50" class="br50p pointer" id="abrirMenu">
-                <div class="relative color1 v-hidden" id="menu">
-                    <div class="absolute color9 derecha0 p5">
-                        <div class="color9 txtwhite f-row jc-c a-c p10">
-                            <?= $_SESSION['usuario']['username'] ?>
-                        </div>
-                        <form action="../Php/Exit.php" method="post" class="space-nw color1 f-row jc-c a-c txtwhite color4">
-                            <button type="submit" name="salir" class="space-nw color1 h100p pointer txtwhite color8 hover4 p10" value="<?= $_SESSION['usuario']['id_user'] ?>">CERRAR SESION</button>
-                        </form>
-                    </div>
+            <div class="color9 derecha0 p5 f-row">
+                <div class="color9 txtwhite f-row jc-c a-c p10">
+                    <?= $_SESSION['usuario']['username'] ?>
                 </div>
+                <form action="../Php/Exit.php" method="post" class="space-nw color1 f-row jc-c a-c txtwhite color4">
+                    <button type="submit" name="salir" class="space-nw color1 h100p pointer txtwhite color8 hover4 p10" value="<?= $_SESSION['usuario']['id_user'] ?>">CERRAR SESION</button>
+                </form>
             </div>
         </div>
     </header>

@@ -17,17 +17,24 @@
                     <td class="center p10"><?= $item->des_kind ?></td>
                     <td class="center p10"><?= $item->title ?></td>
                     <td class="center p10"><?= $item->details ?></td>
-                    <td class="center p10"><?= date_format(new DateTime($item->video_create), "d-m-Y") ?></td>
-                    <td class="center p10">
+                    <td class="center p10"><?= date_format(new DateTime($item->video_create), "d/m/Y") ?></td>
+                    <td class="center p10 f-row">
                         <?php if($item->path_play != null):?>
                             <form action="Player.php" method="post">
                                 <button type="submit" name="ver_video" class="color2 negrita mayus" value="<?= $item->id_video ?>">Ver</button>
                             </form>
+                            <?php if($_SESSION['usuario']["user_permission"] == "Administrador"):?>
+                                <form action="../Php/VideoDelete.php" method="post" id="deleteForm">
+                                    <button type="submit" name="video" id="EliminarVideo" class="color4 negrita mayus txtwhite" value="<?= $item->id_video ?>">Eliminar</button>
+                                </form>
+                            <?php endif;?>
                         <?php else:?>
-                            <form action="Player.php" method="post" class="relative overflow-hidden">
-                                <label for="link_video" class="pointer p10 color2 black negrita mayus" aria-valuetext="<?= $item->id_video?>">enlazar</label>
-                                <input type="file" name="" id="link_video" class="absolute v-hidden">
-                            </form>
+                            Irreconocible...
+                            <?php if($_SESSION['usuario']["user_permission"] == "Administrador"):?>
+                                <form action="../Php/VideoDelete.php" method="post" id="deleteForm">
+                                    <button type="submit" name="video" id="EliminarVideo" class="color4 negrita mayus txtwhite" value="<?= $item->id_video ?>">Eliminar</button>
+                                </form>
+                            <?php endif;?>
                         <?php endif;?>
                     </td>
                 </tr>
@@ -36,3 +43,4 @@
     </table>
 </div>
 <script src="../JavaScripts/SearchVideo0.js"></script>
+<script src="../JavaScripts/VideoDelete1.js"></script>

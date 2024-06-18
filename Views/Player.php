@@ -64,7 +64,9 @@
                     </div>
                     <div class="f-row gap10 p10" id="btnGroupFinal">
                         <a href="/<?= ($v->id_fk_departament == 2) ? "videoteca_rtp_programacion_2" : "videoteca_rtp_prensa_2" ?>/<?= $v->path_play ?>" aria-valuetext="<?= $v->cod_video ?>" id="d_video" class="p10 color3 negrita mayus center br10" download="">Descargar</a>
-                        <div class="p10 color2 negrita mayus center br10 pointer" id="btnEditar" aria-valuetext="<?= $v->id_video ?>">Editar</div>
+                        <?php if($_SESSION['usuario']["user_permission"] == "Administrador"):?>
+                            <div class="p10 color2 negrita mayus center br10 pointer" id="btnEditar" aria-valuetext="<?= $v->id_video ?>">Editar</div>
+                        <?php endif;?>
                     </div>
                 </div>
             </form>
@@ -72,6 +74,6 @@
         <?php endif;?>
     </div>
 </div>
-<script src="../JavaScripts/PlayerValidated.js"></script>
+<!-- <script src="../JavaScripts/PlayerValidated.js"></script> -->
 <script src="../JavaScripts/DownloadH.js"></script>
 <script src="../JavaScripts/ActivarFormulario.js"></script>

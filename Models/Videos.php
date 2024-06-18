@@ -210,7 +210,7 @@
         }
         public static function VerificarParaEditar($id_video){
             try {
-                $sql = "SELECT title, details, des_area, des_kind, date_user, id_video FROM view_videos WHERE id_video = ?";
+                $sql = "SELECT title as descripcion, details as detalle, des_area as area, des_kind as tipo, date_user as fecha_evento, id_video FROM view_videos WHERE id_video = ?";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindParam(1, $id_video, PDO::PARAM_STR);
                 $stmt->execute();
@@ -218,6 +218,51 @@
                 return $resultado;
             } catch (PDOException $th) {
                 echo $th;
+            }
+        }
+        public static function Editar($post){
+            try {
+                $sql = "UPDATE videos SET
+                    title = ?,
+                    details = ?,
+                    id_fk_area = ?,
+                    id_fk_kind = ?,
+                    date_user = ?,
+                    video_update = ?
+                WHERE id_video = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $post->descripcion, PDO::PARAM_STR);
+                $stmt->bindParam(2, $post->detalle, PDO::PARAM_STR);
+                $stmt->bindParam(3, $post->area, PDO::PARAM_STR);
+                $stmt->bindParam(4, $post->tipo, PDO::PARAM_STR);
+                $stmt->bindParam(5, $post->fecha_evento, PDO::PARAM_STR);
+                $stmt->bindParam(6, Connection::$date_hour, PDO::PARAM_STR);
+                $stmt->bindParam(7, $post->id_video, PDO::PARAM_STR);
+                $stmt->execute();
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
+        public static function BuscarDeptoPorVideo($id_video){
+            try {
+                $sql = "SELECT id_fk_departament FROM videos WHERE id_video = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $id_video, PDO::PARAM_STR);
+                $stmt->execute();
+                $resultado = $stmt->fetchColumn();
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
+        public static function Eliminar($id_video){
+            try {
+                $sql = "DELETE FROM videos WHERE id_video = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $id_video, PDO::PARAM_STR);
+                $stmt->execute();
+            } catch (PDOException $th) {
+                echo $th->getMessage();
             }
         }
     }
