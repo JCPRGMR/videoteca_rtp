@@ -12,7 +12,7 @@
 </div>
 
 <div class="w100p h100p color7 overflow-auto">
-    <div action="" method="post" class="f-col p30 gap20">
+    <div class="f-col p30 gap20">
         <div class="f-col gap20 wrap">
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">TITULO</label>
@@ -99,6 +99,6 @@
         </div>
     </div>
 </div>
-<script src="../JavaScripts/ProgrammingLink1.js"></script>
+<script src="../JavaScripts/ProgrammingLink2.js"></script>
 <script src="../JavaScripts/Portrait.js"></script>
 <script src="../JavaScripts/Select.js"></script>

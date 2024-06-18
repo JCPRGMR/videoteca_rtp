@@ -36,4 +36,4 @@
         "details" => "EL USUARIO ENLAZO UN VIDEO DESDE LA IP " . $_SERVER['REMOTE_ADDR'],
     ];
     Users_activities::Insert((object) $array);
-    echo json_encode($_POST);
+    echo json_encode($_POST['img_update']);
