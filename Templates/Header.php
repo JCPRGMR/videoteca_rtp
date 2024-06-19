@@ -65,16 +65,4 @@
             </div>
         </div>
     </header>
-    <script>
-        var abrirMenu = document.getElementById("abrirMenu");
-        var menu = document.getElementById("menu");
-
-        abrirMenu.onclick = function() {
-            if (menu.style.visibility == "" || menu.style.visibility == "hidden") {
-                menu.style.visibility = "visible";
-            } else {
-                menu.style.visibility = "hidden";
-            }
-        }
-    </script>
     <main class="w100p h100p border-box p10">
