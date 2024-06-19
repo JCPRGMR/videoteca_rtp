@@ -15,7 +15,6 @@
 </head>
 <body class="m0 color8 f-col h100vh">
     <header class="p10 f-row jc-b wrap gap10">
-        
         <div class="f-row gap10 a-c">
             <img src="../Images/rtp_logo_blanco.png" alt="" width="75">
             <div class="f-row gap10 wrap">
@@ -37,7 +36,7 @@
                 </a>
             <?php elseif($_SERVER['REQUEST_URI'] === '/Views/Gallery.php' || $_SERVER['REQUEST_URI'] === '/videoteca_rtp/Views/Gallery.php'):?>
                 <input type="search" name="" aria-valuetext="PROGRAMACION" id="search" placeholder="Buscador" class="p10 br10 color7 txtwhite">
-                <a href="ProgrammingForm.php" class="pointer overflow-hidden txtwhite negrita b5-bot txthover1 mayus">
+                <a href="ProgrammingForm.php" class="pointer overflow-hidden txtwhite negrita b5-bot txthover1 mayus" title="Nuevo video">
                     <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <defs>
                             <path id="upload-a" d="M6.29289322,0.292893219 C6.68341751,-0.0976310729 7.31658249,-0.0976310729 7.70710678,0.292893219 C8.09763107,0.683417511 8.09763107,1.31658249 7.70710678,1.70710678 L5.70710678,3.70710678 C5.31658249,4.09763107 4.68341751,4.09763107 4.29289322,3.70710678 C3.90236893,3.31658249 3.90236893,2.68341751 4.29289322,2.29289322 L6.29289322,0.292893219 Z M0,11 L16,11 L16,13 L0,13 L0,11 Z"/>

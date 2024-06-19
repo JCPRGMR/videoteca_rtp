@@ -11,6 +11,7 @@
             <th class="p10">ACCIONES</th>
         </thead>
         <tbody id="tbody">
+    <?php for($i=0; $i<50; $i++):?>
             <?php foreach(Videos::MostrarProgramacion() as $item):?>
                 <tr class="odd8">
                     <td class="center p10"><?= $item->des_area ?></td>
@@ -39,6 +40,7 @@
                     </td>
                 </tr>
             <?php endforeach;?>
+    <?php endfor;?>
         </tbody>
     </table>
 </div>

@@ -11,7 +11,10 @@
         include_once '../Php/Tipos.php';
         
         Videos::Editar((object) $_POST);
-        Videos::BuscarDeptoPorVideo($_POST['id_video']);
+
+        if(isset($_POST['nro_contrato']) && strlen($_POST['nro_contrato']) > 0){
+            # PROCEDIMIENTO PARA MODIFICAR EL CONTRATO
+        }
     }
     switch (Videos::BuscarDeptoPorVideo($_POST['id_video'])) {
         case 1:
