@@ -3,7 +3,7 @@ require_once '../Templates/Header.php';
 require_once '../Models/Videos.php';
 include_once '../Models/Activities.php';
 include_once '../Models/Users_activities.php';
-(isset($_POST['ver_video'])) ? $v = Videos::VideoData($_POST['ver_video']) : header("Location: Press.php");
+(isset($_POST['ver_video'])) ? $v = (Videos::BuscarDeptoPorVideo($_POST['ver_video']) == 2)? Videos::VideoDataPro($_POST['ver_video']) : Videos::VideoData($_POST['ver_video'])  : header("Location: Press.php");
 // (!$v) && header("Location: Press.php");
 (!Activities::Existe("VISUALIZANDO VIDEO")) && Activities::Insertar("VISUALIZANDO VIDEO");
 
@@ -71,7 +71,6 @@ Users_activities::Insert((object) $array);
                 </div>
             </form>
         <?php elseif ($v->id_fk_departament == 2) : ?>
-
             <form action="" method="post" class="" id="FormularioEditar">
                 <div class="f-col gap10 noselect color7 p10">
                     <div class="f-row wrap jc-a">
@@ -119,9 +118,19 @@ Users_activities::Insert((object) $array);
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <div class="color2 mayus negrita p10 br10">Datos del ultimo contrato</div>
+                    <div class="f-col">
+                        <label for="" class="txtwhite negrita">Nro. Contrato</label>
+                        <input type="search" name="nro_contrato" id="nro_contrato" placeholder="Nro. Contrato" class="p10 txtwhite color8" value="<?= $v->nro_agreement ?>" readonly="true">
+                    </div>
+                    <div class="f-col">
+                        <label for="" class="txtwhite negrita">Proveedor/Contrato</label>
+                        <input type="search" name="contrato" id="contrato" placeholder="Proveedor/Contrato" class="p10 txtwhite color8" value="<?= $v->agreement ?>" readonly="true">
+                    </div>
                     <div class="f-col gap10">
-                        <label for="" class="txtwhite negrita">Fecha del evento</label>
-                        <input type="date" name="fecha_evento" id="fecha_evento" value="<?= $v->date_user ?>" readonly="true" class="p10 txtwhite color8">
+                        <label for="" class="txtwhite negrita">Vencimiento del contrato</label>
+                        <input type="date" name="fecha_evento" id="fecha_evento" value="<?= $v->agreement_expiration ?>" readonly="true" class="p10 txtwhite color8">
                     </div>
                     <div class="f-row gap10 p10" id="btnGroupFinal">
                         <a href="/<?= ($v->id_fk_departament == 2) ? "videoteca_rtp_programacion_2" : "videoteca_rtp_prensa_2" ?>/<?= $v->path_play ?>" aria-valuetext="<?= $v->cod_video ?>" id="d_video" class="p10 color3 negrita mayus center br10" download="">Descargar</a>
@@ -134,6 +143,10 @@ Users_activities::Insert((object) $array);
         <?php endif; ?>
     </div>
 </div>
+<?php if($v->id_fk_departament == 1):?>
+    <script src="../JavaScripts/ActivarFormulario_press_0.js"></script>
+<?php elseif($v->id_fk_departament == 2):?>
+    <script src="../JavaScripts/ActivarFormulario1.js"></script>
+<?php endif; ?>
 <!-- <script src="../JavaScripts/PlayerValidated.js"></script> -->
 <script src="../JavaScripts/DownloadH.js"></script>
-<script src="../JavaScripts/ActivarFormulario.js"></script>

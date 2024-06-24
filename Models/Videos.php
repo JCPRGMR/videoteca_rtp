@@ -74,6 +74,7 @@
                 if (!empty($detailConditions)) {
                     $sql .= " OR (" . implode(" AND ", $detailConditions) . ")";
                 }
+                $sql .= " ORDER BY video_create DESC";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindValue(":area", $valor);
                 $stmt->bindValue(":kind", $valor);
@@ -153,6 +154,18 @@
         public static function VideoData($id_video){
             try {
                 $sql = "SELECT * FROM view_videos WHERE id_video = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $id_video, PDO::PARAM_STR);
+                $stmt->execute();
+                $resultado = $stmt->fetch(PDO::FETCH_OBJ);
+                return $resultado;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
+        public static function VideoDataPro($id_video){
+            try {
+                $sql = "SELECT * FROM view_videos_agreement WHERE id_video = ?";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindParam(1, $id_video, PDO::PARAM_STR);
                 $stmt->execute();

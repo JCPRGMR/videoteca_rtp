@@ -11,7 +11,9 @@ btnEditar.addEventListener("click", function(){
         area,
         tipo,
         fecha_evento,
-        mainconteiner
+        mainconteiner,
+        nro_contrato,
+        contrato
     ] = [
         "btnEditar",
         "btnGroupFinal",
@@ -22,8 +24,10 @@ btnEditar.addEventListener("click", function(){
         "area",
         "tipo",
         "fecha_evento",
-        "mainconteiner"
-    ].map(id => document.getElementById(id))
+        "mainconteiner",
+        "nro_contrato",
+        "contrato"
+    ].map(id => document.getElementById(id) || null)
 
     btnEditar.style.visibility = "hidden"
     btnEditar.style.width = "0px"
@@ -33,13 +37,18 @@ btnEditar.addEventListener("click", function(){
     detalle.readOnly = false
     area.readOnly = false
     tipo.readOnly = false
+    
     fecha_evento.readOnly = false
+    nro_contrato.readOnly = false
+    contrato.readOnly = false
 
     descripcion.classList = "negrita fz15 p10"
     detalle.classList = "p10"
     area.classList = "p10"
     tipo.classList = "p10"
     fecha_evento.classList = "p10"
+    nro_contrato.classList = "p10"
+    contrato.classList = "p10"
 
     cargarScript('../JavaScripts/Select.js', function() {
         if (typeof funcionDesdeSelect === 'function') {

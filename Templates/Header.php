@@ -64,4 +64,4 @@
             </div>
         </div>
     </header>
-    <main class="w100p h100p border-box p10">
+    <main class="w100p h100p border-box p10 f-row overflow-auto">
