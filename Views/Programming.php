@@ -3,20 +3,20 @@
 <div class="w100p h100p color7 overflow-auto">
     <table class="w100p collapse txtwhite">
         <thead class="color1 sticky top0">
-            <th class="p10">Categoria</th>
-            <th class="p10">TIPO DE CONTENIDO</th>
             <th class="p10">Titulo</th>
             <th class="p10">Sinopsis</th>
+            <th class="p10">Categoria</th>
+            <th class="p10">TIPO DE CONTENIDO</th>
             <!-- <th class="p10">FECHA DE REGISTRO</th> -->
             <th class="p10">ACCIONES</th>
         </thead>
         <tbody id="tbody">
             <?php foreach(Videos::MostrarProgramacion() as $item):?>
                 <tr class="odd8">
-                    <td class="center p10"><?= $item->des_area ?></td>
-                    <td class="center p10"><?= $item->des_kind ?></td>
                     <td class="center p10"><?= $item->title ?></td>
                     <td class="center p10"><?= $item->details ?></td>
+                    <td class="center p10"><?= $item->des_area ?></td>
+                    <td class="center p10"><?= $item->des_kind ?></td>
                     <!-- <td class="center p10"><?php // echo date_format(new DateTime($item->video_create), "d/m/Y") ?></td> -->
                     <td class="center p10 f-row jc-c">
                         <?php if($item->path_play != null):?>
