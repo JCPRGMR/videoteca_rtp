@@ -5,7 +5,7 @@ $archivo = (!isset($headers["archivo"]) ? null : $headers["archivo"]);
 $contador = (!isset($headers["contador"]) ? "" : $headers["contador"]);
 
 if ($archivo && $contador !== "") {
-    $rutaArchivo = 'E:/Php/videoteca_rtp/prensa/' . $archivo;
+    $rutaArchivo = 'D:/videoteca_rtp/prensa/' . $archivo;
 
     if (file_exists($rutaArchivo) && $contador === "0") {
         unlink($rutaArchivo);

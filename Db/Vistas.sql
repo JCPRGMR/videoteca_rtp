@@ -1,4 +1,4 @@
--- Active: 1718128573843@@127.0.0.1@3306@videoteca_rtp
+-- Active: 1714663991828@@127.0.0.1@3306@videoteca_rtp
 
 USE videoteca_rtp;-- VISTA DE VIDEOS
 DROP VIEW IF EXISTS view_videos;

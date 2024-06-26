@@ -33,12 +33,12 @@
     </div>
 </body>
 </html>
-<script>
+<!-- <script>
     var url_actual = window.location.href;
 
-    var url_destino = "http://192.168.0.92/videoteca_rtp/";
+    var url_destino = "http://192.168.0.88/videoteca_rtp/";
 
     if (url_actual != url_destino) {
         window.location.href = url_destino;
     }
-</script>
+</script> -->
