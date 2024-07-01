@@ -147,4 +147,6 @@ INSERT INTO users(username, passkey, user_permission, user_create, user_update) 
 ("grupo_6","grupo_6@rtp", "Editor", NOW(), NOW()),
 ("grupo_7","grupo_7@rtp", "Editor", NOW(), NOW()),
 ("grupo_8","grupo_8@rtp", "Editor", NOW(), NOW()),
+("grupo_9","grupo_9@rtp", "Editor", NOW(), NOW()),
+("grupo_10","grupo_10@rtp", "Editor", NOW(), NOW()),
 ("prueba","prueba", "Editor", NOW(), NOW());

@@ -16,7 +16,7 @@
         <div class="f-row gap20 wrap">
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Area de cobertura</label>
-                <input type="search" name="area" id="area" placeholder="Area de cobertura" class="p10 br5">
+                <input type="search" name="area" id="area" placeholder="Area de cobertura" class="p10 br5" autocomplete="pff">
                 <div class="relative">
                     <div class="f-col absolute w100p v-hidden" id="g_area">
                         <?php foreach(Departaments_areas::Mostrar(Departaments::BuscarId("PRENSA")) as $item):?>
@@ -27,7 +27,7 @@
             </div>
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Tipo de contenido</label>
-                <input type="search" name="tipo" id="tipo" placeholder="Tipo de contenido" class="p10 br5">
+                <input type="search" name="tipo" id="tipo" placeholder="Tipo de contenido" class="p10 br5" autocomplete="off">
                 <div class="relative">
                     <div class="f-col absolute w100p v-hidden" id="g_tipo">
                         <?php foreach(Departaments_kinds::Mostrar(Departaments::BuscarId("PRENSA")) as $item):?>
@@ -44,11 +44,11 @@
         <div class="f-row gap20 wrap">
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Descripción del evento</label>
-                <input type="search" name="descripcion" id="descripcion" placeholder="Descripción del evento" class="p10 br5">
+                <input type="search" name="descripcion" id="descripcion" placeholder="Descripción del evento" class="p10 br5" autocomplete="off">
             </div>
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Detalles de contenido</label>
-                <input type="search" name="detalles" id="detalles" placeholder="Detalles de contenido" class="p10 br5">
+                <input type="search" name="detalles" id="detalles" placeholder="Detalles de contenido" class="p10 br5" autocomplete="off">
             </div>
         </div>
         <div class="f-col p5 gap10 flex-1 txtwhite" id="filecontainer">
