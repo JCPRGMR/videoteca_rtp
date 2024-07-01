@@ -26,7 +26,7 @@
         if($array != $data){
             include_once '../Php/Areas.php';
             include_once '../Php/Tipos.php';
-            // Videos::Editar((object) $_POST);
+            Videos::Editar((object) $_POST);
             echo 'Editar video de programacion';
         }
         // EDITAR CONTRATO
@@ -52,9 +52,9 @@
             Videos::Editar((object) $_POST);
         }
     }
-    if(isset($_POST['nro_contrato']) && strlen($_POST['nro_contrato']) > 0){
-        # PROCEDIMIENTO PARA MODIFICAR EL CONTRATO
-    }
+    // if(isset($_POST['nro_contrato']) && strlen($_POST['nro_contrato']) > 0){
+    //     # PROCEDIMIENTO PARA MODIFICAR EL CONTRATO
+    // }
     switch (Videos::BuscarDeptoPorVideo($_POST['id_video'])) {
         case 1:
             header("Location: ../Views/Press.php");

@@ -21,7 +21,7 @@
 
     # SI SE MANDO UN ARCHIVO MOVERLO
     if(isset($_FILES['img_update']) && strlen($_FILES['img_update']['name']) > 0) {
-        $rutaArchivo = "E:/Php/videoteca_rtp/programacion/portraits/" . $codigo . "." . pathinfo($_FILES['img_update']['name'], PATHINFO_EXTENSION);
+        $rutaArchivo = "E:/videoteca_rtp/programacion/portraits/" . $codigo . "." . pathinfo($_FILES['img_update']['name'], PATHINFO_EXTENSION);
         move_uploaded_file($_FILES['img_update']['tmp_name'], $rutaArchivo);
         $_POST['portrait'] = $codigo . "." . pathinfo($_FILES['img_update']['name'], PATHINFO_EXTENSION);
     }

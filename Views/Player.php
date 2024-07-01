@@ -63,7 +63,7 @@ Users_activities::Insert((object) $array);
                         <input type="date" name="fecha_evento" id="fecha_evento" value="<?= $v->date_user ?>" readonly="true" class="p10 txtwhite color8">
                     </div>
                     <div class="f-row gap10 p10" id="btnGroupFinal">
-                        <a href="/<?= ($v->id_fk_departament == 2) ? "videoteca_rtp_programacion_2" : "videoteca_rtp_prensa_2" ?>/<?= $v->path_play ?>" aria-valuetext="<?= $v->cod_video ?>" id="d_video" class="p10 color3 negrita mayus center br10" download="">Descargar</a>
+                        <a href="/<?= ($v->id_fk_departament == 2) ? "videoteca_rtp_programacion_2" : "videoteca_rtp_prensa_2" ?>/<?= $v->path_play ?>" aria-valuetext="<?= $v->id_video ?>" id="d_video" class="p10 color3 negrita mayus center br10" download="">Descargar</a>
                         <?php if ($_SESSION['usuario']["user_permission"] == "Administrador") : ?>
                             <div class="p10 color2 negrita mayus center br10 pointer" id="btnEditar" aria-valuetext="<?= $v->id_video ?>">Editar</div>
                         <?php endif; ?>
@@ -133,7 +133,7 @@ Users_activities::Insert((object) $array);
                         <input type="date" name="fecha_evento" id="fecha_evento" value="<?= $v->agreement_expiration ?>" readonly="true" class="p10 txtwhite color8">
                     </div>
                     <div class="f-row gap10 p10" id="btnGroupFinal">
-                        <a href="/<?= ($v->id_fk_departament == 2) ? "videoteca_rtp_programacion_2" : "videoteca_rtp_prensa_2" ?>/<?= $v->path_play ?>" aria-valuetext="<?= $v->cod_video ?>" id="d_video" class="p10 color3 negrita mayus center br10" download="">Descargar</a>
+                        <a href="/<?= ($v->id_fk_departament == 2) ? "videoteca_rtp_programacion_2" : "videoteca_rtp_prensa_2" ?>/<?= $v->path_play ?>" aria-valuetext="<?= $v->id_video ?>" id="d_video" class="p10 color3 negrita mayus center br10" download="">Descargar</a>
                         <?php if ($_SESSION['usuario']["user_permission"] == "Administrador") : ?>
                             <div class="p10 color2 negrita mayus center br10 pointer" id="btnEditar" aria-valuetext="<?= $v->id_video ?>">Editar</div>
                         <?php endif; ?>
@@ -149,4 +149,4 @@ Users_activities::Insert((object) $array);
     <script src="../JavaScripts/ActivarFormulario1.js"></script>
 <?php endif; ?>
 <!-- <script src="../JavaScripts/PlayerValidated.js"></script> -->
-<script src="../JavaScripts/DownloadH.js"></script>
+<script src="../JavaScripts/DownloadH1.js"></script>

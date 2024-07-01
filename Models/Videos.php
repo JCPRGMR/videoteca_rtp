@@ -26,7 +26,7 @@
         public static function BuscarPrensa($post) {
             $valor = "%" . $post->buscar . "%";
             try {
-                $sql = "SELECT * FROM view_videos_prensa WHERE des_area LIKE :area OR des_kind LIKE :kind";
+                $sql = "SELECT * FROM view_videos_prensa WHERE des_area LIKE :area OR des_kind LIKE :kind OR date_user LIKE :date_user";
                 $post->buscar = explode(" ", $post->buscar);
                 $titleConditions = [];
                 $detailConditions = [];
@@ -43,6 +43,7 @@
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindValue(":area", $valor);
                 $stmt->bindValue(":kind", $valor);
+                $stmt->bindValue(":date_user", $valor);
                 foreach ($post->buscar as $i => $word) {
                     $likeWord = "%" . $word . "%";
                     $title = ":title_" . $i;

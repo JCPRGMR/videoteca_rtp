@@ -7,7 +7,7 @@
             <th class="p10">TIPO DE CONTENIDO</th>
             <th class="p10">DESCRIPCION DEL EVENTO</th>
             <th class="p10">DETALLE DE CONTENIDO</th>
-            <th class="p10">FECHA DE REGISTRO</th>
+            <th class="p10">FECHA DEL EVENTO</th>
             <th class="p10">ACCIONES</th>
         </thead>
         <tbody id="tbody">
@@ -17,7 +17,7 @@
                     <td class="center p10"><?= $item->des_kind ?></td>
                     <td class="center p10"><?= $item->title ?></td>
                     <td class="center p10"><?= $item->details ?></td>
-                    <td class="center p10"><?= date_format(new DateTime($item->video_create), "Y-m-d") ?></td>
+                    <td class="center p10"><?= date_format(new DateTime($item->date_user), "Y-m-d") ?></td>
                     <td class="center p10 f-row">
                         <?php if($item->path_play != null):?>
                             <form action="Player.php" method="post">
@@ -40,5 +40,5 @@
         </tbody>
     </table>
 </div>
-<script src="../JavaScripts/SearchVideo0.js"></script>
+<script src="../JavaScripts/SearchVideo1.js"></script>
 <script src="../JavaScripts/VideoDelete1.js"></script>
