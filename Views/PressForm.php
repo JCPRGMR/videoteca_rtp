@@ -16,7 +16,7 @@
         <div class="f-row gap20 wrap">
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">Area de cobertura</label>
-                <input type="search" name="area" id="area" placeholder="Area de cobertura" class="p10 br5" autocomplete="pff">
+                <input type="search" name="area" id="area" placeholder="Area de cobertura" class="p10 br5" autocomplete="off">
                 <div class="relative">
                     <div class="f-col absolute w100p v-hidden" id="g_area">
                         <?php foreach(Departaments_areas::Mostrar(Departaments::BuscarId("PRENSA")) as $item):?>
