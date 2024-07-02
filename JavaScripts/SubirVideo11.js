@@ -4,44 +4,50 @@ window.onload = function() {
     btnSubirVideo.onclick = function() {
         // alert("Espere para que el video Termine de subirse")
         let Video = document.getElementById("VideoContainer")
-        let f = Video.files[0];
-
-        var SendParams = new URLSearchParams({
-            area: document.getElementById("area").value,
-            tipo: document.getElementById("tipo").value,
-            fecha: document.getElementById("fecha").value,
-            descripcion: document.getElementById("descripcion").value,
-            detalles: document.getElementById("detalles").value,
-            departamento: "PRENSA"
-        }).toString();
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", '../Php/PressUpload.php', false);
-        xhr.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var response = JSON.parse(xhr.responseText);
-                servicioFile({
-                    url: "../Php/GuardarVideo.php",
-                    type: "post",
-                    responseType: "text",
-                    mbEnvio: 3,
-                    file: f,
-                    name: response.cod_video
-                }).then(function(d) {
-                    if (d === "OK") {  
-                        var spin_load = document.getElementById("spin_load")
-                        var spin_text = document.getElementById("spin_text")
-                        spin_text.textContent = "Video Subido Correctamente"
-                        setTimeout(() => {
-                            location.href = "../Views/Press.php"
-                        }, 1500);
-                    } else {
-                        console.log('Error al subir el archivo')
-                    }
-                });
-            }
-        };
-        xhr.send(SendParams);
+        if(Video.value.length > 0 && document.getElementById("area").value.length > 0 && document.getElementById("tipo").value.length > 0){
+            let f = Video.files[0];
+            var SendParams = new URLSearchParams({
+                area: document.getElementById("area").value,
+                tipo: document.getElementById("tipo").value,
+                fecha: document.getElementById("fecha").value,
+                descripcion: document.getElementById("descripcion").value,
+                detalles: document.getElementById("detalles").value,
+                departamento: "PRENSA"
+            }).toString();
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '../Php/PressUpload.php', false);
+            xhr.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    servicioFile({
+                        url: "../Php/GuardarVideo.php",
+                        type: "post",
+                        responseType: "text",
+                        mbEnvio: 3,
+                        file: f,
+                        name: response.cod_video
+                    }).then(function(d) {
+                        if (d === "OK") {  
+                            var spin_load = document.getElementById("spin_load")
+                            var spin_text = document.getElementById("spin_text")
+                            spin_text.textContent = "Video Subido Correctamente"
+                            setTimeout(() => {
+                                location.href = "../Views/Press.php"
+                            }, 1500);
+                        } else {
+                            console.log('Error al subir el archivo')
+                        }
+                    });
+                }
+            };
+            xhr.send(SendParams);
+        }else{
+            alert("Por favor llene los datos correctamente")
+        }
+        Video.value.length <= 0 ? Video.classList.add("color4") : Video.classList = "";
+        document.getElementById("area").value.length <= 0 ? document.getElementById("area").classList += " color4 txtwhite" : document.getElementById("area").classList = "p10 br5";
+        document.getElementById("tipo").value.length <= 0 ? document.getElementById("tipo").classList += " color4 txtwhite" : document.getElementById("tipo").classList = "p10 br5";
     }
 }
 var servicioFile = function(obj) {
@@ -106,7 +112,7 @@ var servicioFile = function(obj) {
                 
                 var porcentage = (inicio * 100) / longitud
                 // spin_text.textContent = "Subiendo video... " + inicio.toString() + "/" + longitud.toString()
-                spin_text.textContent = "Subiendo video... " + Math.round(porcentage).toString() + " %"
+                spin_text.textContent = "No cierre la pestaña! Subiendo video... " + Math.round(porcentage).toString() + " %"
             } else {
                 var PathSend = new URLSearchParams({
                     path: obj.name.toUpperCase() + '.' + archivo.name.split('.').pop(),

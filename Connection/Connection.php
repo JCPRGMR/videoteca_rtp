@@ -9,7 +9,6 @@
         private static string $user = "root";
         private static string $password = "";
         public static string $date_hour;
-
         public static function Conectar(){
             try {
                 self::$date_hour = date('Y-m-d H:i:s');
