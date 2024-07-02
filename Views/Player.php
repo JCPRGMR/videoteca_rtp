@@ -10,7 +10,7 @@ include_once '../Models/Users_activities.php';
 $array = [
     "id_user" => $_SESSION['usuario']['id_user'],
     "id_video" => Videos::BuscarId($v->cod_video),
-    "id_activity" => Activities::BuscarId("SUBIENDO VIDEO"),
+    "id_activity" => Activities::BuscarId("VISUALIZANDO VIDEO"),
     "ip" => ($_SERVER['REMOTE_ADDR'] == "127.0.0.1") ? "localhost" : $_SERVER['REMOTE_ADDR'],
     "details" => "EL USUARIO VIZUALIZO EL VIDEO " . $v->path_play . " DESDE LA IP " . $_SERVER['REMOTE_ADDR'],
 ];
