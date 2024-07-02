@@ -35,14 +35,14 @@
     }
 
     # INSERTAR PARA ACTIVIDADES
-    if (!Activities::Existe("SUBIENDO VIDEO")) {
-        Activities::Insertar("SUBIENDO VIDEO");
+    if (!Activities::Existe("ENLAZAR VIDEO")) {
+        Activities::Insertar("ENLAZAR VIDEO");
     }
 
     $array = [
         "id_user" => $_SESSION['usuario']['id_user'],
         "id_video" => Videos::BuscarId($codigo),
-        "id_activity" => Activities::BuscarId("SUBIENDO VIDEO"),
+        "id_activity" => Activities::BuscarId("ENLAZAR VIDEO"),
         "ip" => ($_SERVER['REMOTE_ADDR'] == "127.0.0.1") ? "localhost" : $_SERVER['REMOTE_ADDR'],
         "details" => "EL USUARIO ENLAZO UN VIDEO DESDE LA IP " . $_SERVER['REMOTE_ADDR'],
     ];
