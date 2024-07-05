@@ -3,7 +3,7 @@
     Class Videos extends Connection{
         public static function MostrarPrensa(){
             try {
-                $sql = "SELECT * FROM view_videos_prensa ORDER BY video_create DESC";
+                $sql = "SELECT * FROM view_videos_prensa ORDER BY video_create DESC LIMIT 100";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -26,13 +26,20 @@
         public static function BuscarPrensa($post) {
             $valor = "%" . $post->buscar . "%";
             try {
-                $sql = "SELECT * FROM view_videos_prensa WHERE des_area LIKE :area OR des_kind LIKE :kind OR date_user LIKE :date_user";
+                $sql = "SELECT * FROM view_videos_prensa WHERE des_area LIKE :area OR date_user LIKE :date_user";
                 $post->buscar = explode(" ", $post->buscar);
+                $kindConditions = [];
                 $titleConditions = [];
                 $detailConditions = [];
+        
                 for ($i = 0; $i < count($post->buscar); $i++) {
+                    $kindConditions[] = "des_kind LIKE :kind_" . $i;
                     $titleConditions[] = "title LIKE :title_" . $i;
                     $detailConditions[] = "details LIKE :detail_" . $i;
+                }
+        
+                if (!empty($kindConditions)) {
+                    $sql .= " OR (" . implode(" AND ", $kindConditions) . ")";
                 }
                 if (!empty($titleConditions)) {
                     $sql .= " OR (" . implode(" AND ", $titleConditions) . ")";
@@ -40,24 +47,26 @@
                 if (!empty($detailConditions)) {
                     $sql .= " OR (" . implode(" AND ", $detailConditions) . ")";
                 }
+        
+                $sql .= " ORDER BY video_create DESC";
                 $stmt = Connection::Conectar()->prepare($sql);
                 $stmt->bindValue(":area", $valor);
-                $stmt->bindValue(":kind", $valor);
                 $stmt->bindValue(":date_user", $valor);
+        
                 foreach ($post->buscar as $i => $word) {
                     $likeWord = "%" . $word . "%";
-                    $title = ":title_" . $i;
-                    $detail = ":detail_" . $i;
-                    $stmt->bindValue($title, $likeWord);
-                    $stmt->bindValue($detail, $likeWord);
+                    $stmt->bindValue(":kind_" . $i, $likeWord);
+                    $stmt->bindValue(":title_" . $i, $likeWord);
+                    $stmt->bindValue(":detail_" . $i, $likeWord);
                 }
+        
                 $stmt->execute();
                 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $resultado;
             } catch (PDOException $th) {
                 echo $th->getMessage();
             }
-        }
+        }        
         public static function BuscarProgramacion($post) {
             $valor = "%" . $post->buscar . "%";
             try {
