@@ -42,5 +42,8 @@
         </tbody>
     </table>
 </div>
+<script>
+    var userPermission = '<?= $_SESSION['usuario']["user_permission"] ?>';
+</script>
 <script src="../JavaScripts/SearchVideo2.js"></script>
 <script src="../JavaScripts/VideoDelete1.js"></script>

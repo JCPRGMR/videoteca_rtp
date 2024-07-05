@@ -1,4 +1,3 @@
-// alert("consulta arreglada")
 var search = document.getElementById("search");
 var isRequestInProgress = false; // Bandera para rastrear el estado de la solicitud
 
@@ -30,7 +29,7 @@ search.addEventListener('input', function() {
                                 <td class="center p10" title="${element.title}">${element.title}</td>
                                 <td class="center p10" title="${element.details}">${element.details}</td>
                                 <td class="center p10" title="${element.date_create}">${element.video_create.split(" ")[0]}</td>
-                                <td class="center p10">
+                                <td class="center p10 f-row">
                                     ${(element.path_play != null) ? `
                                         <form action="Player.php" method="post">
                                             <button type="submit" name="ver_video" class="color2 negrita mayus" value="${element.id_video}">Ver</button>
@@ -40,6 +39,10 @@ search.addEventListener('input', function() {
                                             <input type="file" name="link_video" id="link_video_${element.id_video}" class="absolute v-hidden">
                                         </form>`
                                     }
+                                    ${userPermission === 'Administrador' ? `
+                                        <form action="../Php/VideoDelete.php" method="post" id="deleteForm">
+                                            <button type="submit" name="video" id="EliminarVideo" class="color4 negrita mayus txtwhite" value="${element.id_video}">Eliminar</button>
+                                        </form>` : ''}
                                 </td>
                             </tr>
                         `;
