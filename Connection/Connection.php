@@ -4,8 +4,11 @@
         return trim($value);
     }, $_POST);
     class Connection{
-        private static string $host = "localhost";
         private static string $database = "videoteca_rtp";
+        // private static string $host = "192.168.0.88";
+        // private static string $user = "master";
+        // private static string $password = "master";
+        private static string $host = "localhost";
         private static string $user = "root";
         private static string $password = "";
         public static string $date_hour;
