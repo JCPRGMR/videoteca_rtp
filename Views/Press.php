@@ -42,5 +42,5 @@
         </tbody>
     </table>
 </div>
-<script src="../JavaScripts/SearchVideo1.js"></script>
+<script src="../JavaScripts/SearchVideo2.js"></script>
 <script src="../JavaScripts/VideoDelete1.js"></script>
