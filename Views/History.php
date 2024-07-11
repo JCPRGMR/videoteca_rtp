@@ -2,12 +2,14 @@
 <?php require_once '../Models/Users.php'?>
 <!-- <link rel="stylesheet" href="../Css/videos_list.css"> -->
 <?php if(isset($_POST['videos_de_usuario'])):?>
+    <?php $i = 1?>
     <div class="w100p h100p color7 overflow-auto">
         <table class="w100p collapse txtwhite">
             <thead class="color1 sticky top0">
+                <th class="p10">#</th>
                 <th class="p10">USUARIO</th>
                 <th class="p10">ROL</th>
-                <th class="p10">VIDEOS SUBIDO</th>
+                <th class="p10">VIDEO SUBIDO</th>
                 <th class="p10">AREA DE COBERTURA</th>
                 <th class="p10">TIPO DE CONTENIDO</th>
                 <th class="p10">FECHA DE SUBIDA</th>
@@ -16,6 +18,7 @@
             <tbody id="tbody">
                 <?php foreach(Users::Videos_de_usuario($_POST['videos_de_usuario']) as $item):?>
                     <tr class="odd8" title="video subido desde la IP [<?= $item->ip_user ?>]">
+                        <td class="center p10"><?= $i++ ?></td>
                         <td class="center p10"><?= $item->username ?></td>
                         <td class="center p10"><?= $item->user_permission ?></td>
                         <td class="center p10"><?= $item->path_play ?></td>

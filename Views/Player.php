@@ -92,7 +92,7 @@ Users_activities::Insert((object) $array);
                                     </svg>
                                 </label>
                                 <input type="file" name="" id="edit_portrait" class="v-hidden absolute">
-                                <img src="/videoteca_rtp_programacion_2_img/<?= $v->portrait ?>" alt="Portrait">
+                                <img src="/videoteca_rtp_programacion_2_img/<?= $v->portrait ?>" alt="Portrait" width="200">
                             </div>
                         <?php endif;?>
                     </div>

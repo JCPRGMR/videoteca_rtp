@@ -52,15 +52,15 @@
             </div>
         </div>
         <div class="f-col p5 gap10 flex-1 txtwhite" id="filecontainer">
-            <input type="file" name="" id="VideoContainer">
+            <input type="file" name="" id="VideoContainer" accept=".mp4">
         </div>
         <div class="f-row gap20 wrap">
             <div class="f-col p5 gap10 flex-1">
                 <button type="submit" class="p10 negrita color5 mayus pointer space-nw" id="subirVideo" title="SI EL VIDEO SE SUBIRA AL SERVIDOR">Subir Video</button>
             </div>
-            <div class="f-col p5 gap10 flex-1">
+            <!-- <div class="f-col p5 gap10 flex-1">
                 <button type="submit" class="p10 negrita color2 mayus space-nw" id="subirenlace" title="SI EL VIDEO YA SE ENCUENTRA EN EL SERVIDOR">Enlazar</button>
-            </div>
+            </div> -->
             <div class="f-col p5 gap10 flex-1">
                 <a href="Press.php" class="p10 negrita color4 txtwhite mayus pointer center space-nw">Volver atras</a>
             </div>

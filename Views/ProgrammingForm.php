@@ -16,7 +16,7 @@
         <div class="f-col gap20 wrap">
             <div class="f-col p5 gap10 flex-1">
                 <label for="" class="mayus txtwhite space-nw negrita">TITULO</label>
-                <input type="search" name="titulo" id="titulo" placeholder="Descripción del evento" class="p10 br5">
+                <input type="search" name="titulo" id="titulo" placeholder="TItulo" class="p10 br5">
             </div>
         </div>
         <div class="f-row gap20 wrap">
@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="f-col p5 gap10 flex-1 txtwhite a-c" id="filecontainer">
-            <img src="" alt="MINIATURA" width="200" height="250" class="color8" id="ImgPortrait">
+            <img src="" alt="MINIATURA" width="200" class="color8" id="ImgPortrait">
         </div>
         <div class="f-col p5 gap10 flex-1 txtwhite" id="filecontainer">
             <div class="f-col p5 gap10 flex-1">
@@ -94,11 +94,11 @@
                 <button type="submit" class="p10 negrita color2 mayus space-nw" id="subirenlace" title="SI EL VIDEO YA SE ENCUENTRA EN EL SERVIDOR">Enlazar</button>
             </div>
             <div class="f-col p5 gap10 flex-1">
-                <a href="Press.php" class="p10 negrita color4 txtwhite mayus pointer center space-nw">Volver atras</a>
+                <a href="Programming.php" class="p10 negrita color4 txtwhite mayus pointer center space-nw">Volver atras</a>
             </div>
         </div>
     </div>
 </div>
-<script src="../JavaScripts/ProgrammingLink3.js"></script>
+<script src="../JavaScripts/ProgrammingLink4.js"></script>
 <script src="../JavaScripts/Portrait.js"></script>
 <script src="../JavaScripts/Select.js"></script>
