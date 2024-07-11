@@ -18,9 +18,16 @@
         <div class="f-row gap10 a-c">
             <img src="../Images/rtp_logo_blanco.png" alt="" width="75">
             <div class="f-row gap10 wrap">
-                <a href="../Views/Press.php" class="txtwhite negrita mayus txthover1 p5 <?= ($_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/Press.php' || $_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/PressForm.php')? 'text1 b1-bot' : ''; ?>">prensa</a>
-                <!-- <a href="../Views/Programming.php" class="txtwhite negrita mayus txthover1 p5 <?php // ($_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/Programming.php' || $_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/ProgrammingForm.php')? 'text1 b1-bot' : ''; ?>">programacion</a>
-                <a href="../Views/Gallery.php" class="txtwhite negrita mayus txthover1 p5 <?php // ($_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/Gallery.php')? 'text1 b1-bot' : ''; ?>">GALERIA</a> -->
+                <?php if($_SESSION['usuario']["user_permission"] == "Administrador" || $_SESSION['usuario']["user_permission"] == "Editor"):?>
+                    <a href="../Views/Press.php" class="txtwhite negrita mayus txthover1 p5 <?= ($_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/Press.php' || $_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/PressForm.php')? 'text1 b1-bot' : ''; ?>">prensa</a>
+                <?php endif;?>
+                <?php if($_SESSION['usuario']["user_permission"] == "Administrador" || $_SESSION['usuario']["user_permission"] == "Programacion"):?>
+                    <a href="../Views/Programming.php" class="txtwhite negrita mayus txthover1 p5 <?= ($_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/Programming.php' || $_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/ProgrammingForm.php')? 'text1 b1-bot' : ''; ?>">programacion</a>
+                    <a href="../Views/Gallery.php" class="txtwhite negrita mayus txthover1 p5 <?= ($_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/Gallery.php')? 'text1 b1-bot' : ''; ?>">GALERIA</a>
+                <?php endif;?>
+                <?php if($_SESSION['usuario']["user_permission"] == "Administrador"):?>
+                    <a href="../Views/History.php" class="txtwhite negrita mayus txthover1 p5 <?= ($_SERVER['REQUEST_URI'] == '/videoteca_rtp/Views/History.php')? 'text1 b1-bot' : ''; ?>">Historial</a>
+                <?php endif;?>
             </div>
         </div>
         <div class="relative f-row gap10 a-c wrap">

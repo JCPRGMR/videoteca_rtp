@@ -2,7 +2,7 @@
 <?php require_once '../Models/Videos.php'?>
 <div class="w100p h100p color7 overflow-auto">
     <table class="w100p collapse txtwhite">
-        <thead class="color1 ">
+        <thead class="color1 sticky top0">
             <th class="p10">AREA DE COBERTURA</th>
             <th class="p10">TIPO DE CONTENIDO</th>
             <th class="p10">DESCRIPCION DEL EVENTO</th>

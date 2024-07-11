@@ -16,4 +16,28 @@
                 echo $th->getMessage();
             }
         }
+        public static function Historial_de_subida(){
+            try {
+                $sql = "SELECT * FROM view_history_videos_upgrade";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->execute();
+                $response = $stmt->fetchAll(PDO::FETCH_OBJ);
+                return $response;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+            
+        }
+        public static function Videos_de_usuario($id_usuario){
+            try {
+                $sql = "SELECT * FROM view_user_videos WHERE id_user = ?";
+                $stmt = Connection::Conectar()->prepare($sql);
+                $stmt->bindParam(1, $id_usuario, PDO::PARAM_STR);
+                $stmt->execute();
+                $response = $stmt->fetchAll(PDO::FETCH_OBJ);
+                return $response;
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+        }
     }
